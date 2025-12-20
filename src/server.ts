@@ -15,5 +15,5 @@ process.on("unhandledRejection", (err) => {
   process.exit(1);
 });
 
-init();
+void init();
 initDb();

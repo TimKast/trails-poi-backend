@@ -1,0 +1,17 @@
+# Build output
+dist/
+
+# Test coverage
+coverage/
+
+# Dependencies
+node_modules/
+
+# Config files
+*.config.js
+*.config.ts
+
+# JSON data files
+*.json
+!tsconfig.json
+!package.json

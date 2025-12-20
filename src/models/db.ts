@@ -2,7 +2,7 @@ import { userJsonStore } from "./json/user-json-store";
 
 type Db = {
   userStore: typeof userJsonStore | null;
-  trailStore: any;
+  trailStore: unknown;
 };
 
 export const db: Db = {
