@@ -1,11 +1,11 @@
 export type User = {
-  id: string;
+  _id: string;
   email: string;
   password: string;
 };
 
 export type Trail = {
-  id: string;
+  _id: string;
   name: string;
   description: string;
   location: { lat: number; lng: number };

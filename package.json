@@ -27,6 +27,7 @@
   },
   "dependencies": {
     "@hapi/hapi": "^21.4.4",
-    "lowdb": "^7.0.1"
+    "lowdb": "^7.0.1",
+    "uuid": "^13.0.0"
   }
 }
