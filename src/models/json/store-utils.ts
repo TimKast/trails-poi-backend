@@ -1,6 +1,6 @@
 // eslint-disable-next-line import/no-unresolved
 import { JSONFilePreset } from "lowdb/node";
-import type { Trail, User } from "../model-types";
+import type { Trail, User } from "../../types/model-types";
 
 type Database = {
   users: User[];
