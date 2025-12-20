@@ -1,4 +1,5 @@
 import Hapi from "@hapi/hapi";
+import { initDb } from "./models/db";
 
 async function init() {
   const server = Hapi.server({
@@ -15,3 +16,4 @@ process.on("unhandledRejection", (err) => {
 });
 
 init();
+initDb();

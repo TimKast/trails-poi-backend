@@ -3,19 +3,36 @@
     "node": true,
     "es2021": true
   },
-  "extends": [
-    "airbnb-base",
-    "prettier"
-  ],
+  "extends": ["airbnb-base", "prettier"],
+  "parser": "@typescript-eslint/parser",
   "parserOptions": {
     "ecmaVersion": "latest",
     "sourceType": "module"
   },
+  "settings": {
+    "import/parsers": {
+      "@typescript-eslint/parser": [".ts", ".tsx"]
+    },
+    "import/resolver": {
+      "typescript": {
+        "alwaysTryTypes": true,
+        "project": "./tsconfig.json"
+      },
+      "node": {
+        "extensions": [".js", ".ts"]
+      }
+    }
+  },
   "rules": {
-    "quotes": [
+    "import/extensions": [
       "error",
-      "double"
+      "ignorePackages",
+      {
+        "js": "always",
+        "ts": "never"
+      }
     ],
+    "quotes": ["error", "double"],
     "object-shorthand": "off",
     "no-underscore-dangle": "off",
     "no-param-reassign": "off",
