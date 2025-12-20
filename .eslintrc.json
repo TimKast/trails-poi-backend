@@ -1,0 +1,25 @@
+{
+  "env": {
+    "node": true,
+    "es2021": true
+  },
+  "extends": [
+    "airbnb-base",
+    "prettier"
+  ],
+  "parserOptions": {
+    "ecmaVersion": "latest",
+    "sourceType": "module"
+  },
+  "rules": {
+    "quotes": [
+      "error",
+      "double"
+    ],
+    "object-shorthand": "off",
+    "no-underscore-dangle": "off",
+    "no-param-reassign": "off",
+    "func-names": "off",
+    "no-console": "off"
+  }
+}
