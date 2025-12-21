@@ -1,6 +1,6 @@
 import { v4 } from "uuid";
 import type { User } from "../../types/model-types";
-import { UserStore } from "../../types/store-types";
+import type { UserStore } from "../../types/store-types";
 import db from "./store-utils";
 
 export const userJsonStore: UserStore = {
