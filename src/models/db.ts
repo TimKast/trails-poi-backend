@@ -1,8 +1,9 @@
+import { trailJsonStore } from "./json/trail-json-store";
 import { userJsonStore } from "./json/user-json-store";
 
 type Db = {
   userStore: typeof userJsonStore | null;
-  trailStore: unknown;
+  trailStore: typeof trailJsonStore | null;
 };
 
 export const db: Db = {
@@ -12,4 +13,5 @@ export const db: Db = {
 
 export function initDb() {
   db.userStore = userJsonStore;
+  db.trailStore = trailJsonStore;
 }

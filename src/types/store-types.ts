@@ -1,4 +1,4 @@
-import type { User } from "./model-types";
+import type { Trail, User } from "./model-types";
 
 interface Store<T> {
   find(): Promise<T[]>;
@@ -10,4 +10,8 @@ interface Store<T> {
 
 export interface UserStore extends Store<User> {
   findByEmail(email: string): Promise<User | undefined>;
+}
+
+export interface TrailStore extends Store<Trail> {
+  update(trail: Trail, updatedTrail: Partial<Omit<Trail, "_id">>): Promise<Trail | undefined>;
 }
