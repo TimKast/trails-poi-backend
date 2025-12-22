@@ -13,5 +13,5 @@ export interface UserStore extends Store<User> {
 }
 
 export interface TrailStore extends Store<Trail> {
-  update(trail: Trail, updatedTrail: Partial<Omit<Trail, "_id">>): Promise<Trail | undefined>;
+  update(id: string, updatedTrail: Partial<Omit<Trail, "_id">>): Promise<Trail | undefined>;
 }

@@ -40,8 +40,9 @@ export const trailJsonStore: TrailStore = {
     await db.write();
   },
 
-  async update(trail: Trail, updatedTrail: Partial<Omit<Trail, "_id">>): Promise<Trail | undefined> {
-    if (db.data.trails.includes(trail)) {
+  async update(id: string, updatedTrail: Partial<Omit<Trail, "_id">>): Promise<Trail | undefined> {
+    const trail = db.data.trails.find((trail) => trail._id === id);
+    if (trail) {
       Object.assign(trail, updatedTrail);
       await db.write();
       return trail;
