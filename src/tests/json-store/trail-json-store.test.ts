@@ -1,5 +1,5 @@
 import { beforeEach, describe, expect, it } from "vitest";
-import { trailJsonStore } from "../models/json/trail-json-store";
+import { trailJsonStore } from "../../models/json/trail-json-store";
 
 describe("TrailJsonStore", () => {
   beforeEach(async () => {

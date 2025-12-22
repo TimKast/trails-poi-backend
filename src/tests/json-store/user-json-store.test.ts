@@ -1,5 +1,5 @@
 import { beforeEach, describe, expect, it } from "vitest";
-import { userJsonStore } from "../models/json/user-json-store";
+import { userJsonStore } from "../../models/json/user-json-store";
 
 describe("UserJsonStore", () => {
   beforeEach(async () => {
