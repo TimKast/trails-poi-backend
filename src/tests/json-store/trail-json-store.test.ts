@@ -1,5 +1,5 @@
 import { beforeEach, describe, expect, it } from "vitest";
-import { trailJsonStore } from "../models/json/trail-json-store";
+import { trailJsonStore } from "../../models/json/trail-json-store";
 
 describe("TrailJsonStore", () => {
   beforeEach(async () => {
@@ -72,7 +72,7 @@ describe("TrailJsonStore", () => {
         location: { lat: 7, lng: 8 },
       });
 
-      const updated = await trailJsonStore.update(created, {
+      const updated = await trailJsonStore.update(created._id, {
         name: "Updated Trail",
         description: "Updated description",
         location: { lat: 3, lng: 5 },
@@ -92,7 +92,7 @@ describe("TrailJsonStore", () => {
         location: { lat: 0, lng: 0 },
       };
 
-      const updated = await trailJsonStore.update(fakeTrail, {
+      const updated = await trailJsonStore.update(fakeTrail._id, {
         name: "Should Not Update",
       });
 
