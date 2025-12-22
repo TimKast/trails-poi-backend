@@ -34,7 +34,6 @@ export const trailsApi = {
     handler: async function (request: Request, h: ResponseToolkit) {
       try {
         const data = request.payload as Omit<Trail, "_id">;
-        console.log(data);
         const trail = await db.trailStore!.create(data);
         return h.response(trail).code(201);
       } catch {
