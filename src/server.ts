@@ -11,6 +11,7 @@ export async function initServerSecurity(server: Server) {
     key: process.env.jwt_secret,
     validate: validate,
     verifyOptions: { algorithms: ["HS256"] },
+    cookieKey: process.env.cookie_name,
   });
   server.auth.default("jwt");
 }
