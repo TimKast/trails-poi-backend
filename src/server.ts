@@ -5,11 +5,8 @@ import { apiRoutes } from "./api-routes";
 import { validate } from "./api/jwt-utils";
 import { initDb } from "./models/db";
 
-async function initPlugins(server: Server) {
+export async function initServerSecurity(server: Server) {
   await server.register(jwt);
-}
-
-function initSecurity(server: Server) {
   server.auth.strategy("jwt", "jwt", {
     key: process.env.jwt_secret,
     validate: validate,
@@ -23,8 +20,7 @@ async function init() {
     port: process.env.PORT || 3000,
     host: "localhost",
   });
-  await initPlugins(server);
-  initSecurity(server);
+  await initServerSecurity(server);
   server.route(apiRoutes);
   await server.start();
   console.log("Server running on %s", server.info.uri);
