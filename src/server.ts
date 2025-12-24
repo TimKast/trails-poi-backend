@@ -1,9 +1,19 @@
 import Hapi, { Server } from "@hapi/hapi";
+import Inert from "@hapi/inert";
+import Vision from "@hapi/vision";
 import "dotenv/config";
 import * as jwt from "hapi-auth-jwt2";
+import HapiSwagger from "hapi-swagger";
 import { apiRoutes } from "./api-routes";
 import { validate } from "./api/jwt-utils";
 import { initDb } from "./models/db";
+
+const swaggerOptions = {
+  info: {
+    title: "POI Trail API",
+    version: "1.0.0",
+  },
+};
 
 export async function initServerSecurity(server: Server) {
   await server.register(jwt);
@@ -22,6 +32,14 @@ async function init() {
     host: "localhost",
   });
   await initServerSecurity(server);
+  await server.register([
+    Inert,
+    Vision,
+    {
+      plugin: HapiSwagger,
+      options: swaggerOptions,
+    },
+  ]);
   server.route(apiRoutes);
   await server.start();
   console.log("Server running on %s", server.info.uri);
