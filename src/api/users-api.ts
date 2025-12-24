@@ -5,6 +5,7 @@ import { db } from "../models/db";
 
 export const usersApi = {
   authenticate: {
+    auth: false,
     handler: async function (request: Request, h: ResponseToolkit) {
       console.log(request.payload);
       const { email, password } = request.payload as { email: string; password: string };
@@ -29,6 +30,7 @@ export const usersApi = {
   },
 
   signup: {
+    auth: false,
     handler: async function (request: Request, h: ResponseToolkit) {
       const { email, password } = request.payload as { email: string; password: string };
       try {
