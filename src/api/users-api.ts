@@ -1,17 +1,16 @@
 import Boom from "@hapi/boom";
 import { Request, ResponseToolkit } from "@hapi/hapi";
-import { createToken, decodeToken } from "../api/jwt-utils";
+import { createToken } from "../api/jwt-utils";
 import { db } from "../models/db";
 
 export const usersApi = {
   authenticate: {
     auth: false,
     handler: async function (request: Request, h: ResponseToolkit) {
-      console.log(request.payload);
       const { email, password } = request.payload as { email: string; password: string };
       try {
         const user = await db.userStore!.findByEmail(email);
-        console.log("Found user:", user);
+
         if (!user) {
           return Boom.unauthorized("User not found");
         }
@@ -19,8 +18,7 @@ export const usersApi = {
           return Boom.unauthorized("Invalid password");
         }
         const token = createToken(user);
-        console.log("Generated token:", token);
-        console.log("Decoded token:", decodeToken(token));
+
         return h.response({ success: true, token: token }).code(201);
       } catch (error) {
         console.error("Error during authentication:", error);
