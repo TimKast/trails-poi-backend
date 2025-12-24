@@ -19,3 +19,8 @@ export const singleUser: Omit<User, "_id"> = {
   email: "test@example.com",
   password: "secret",
 };
+
+export const otherUser: Omit<User, "_id"> = {
+  email: "other@example.com",
+  password: "secret",
+};
