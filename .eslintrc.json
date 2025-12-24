@@ -3,23 +3,23 @@
     "node": true,
     "es2021": true
   },
-  "extends": [
-    "airbnb-base",
-    "prettier"
-  ],
+  "extends": ["eslint:recommended", "plugin:@typescript-eslint/recommended", "plugin:@typescript-eslint/recommended-type-checked", "prettier"],
+  "parser": "@typescript-eslint/parser",
   "parserOptions": {
     "ecmaVersion": "latest",
-    "sourceType": "module"
+    "sourceType": "module",
+    "project": "./tsconfig.json"
   },
+  "plugins": ["@typescript-eslint"],
   "rules": {
-    "quotes": [
+    "quotes": ["error", "double"],
+    "no-console": "off",
+    "@typescript-eslint/no-unused-vars": [
       "error",
-      "double"
-    ],
-    "object-shorthand": "off",
-    "no-underscore-dangle": "off",
-    "no-param-reassign": "off",
-    "func-names": "off",
-    "no-console": "off"
+      {
+        "argsIgnorePattern": "^_",
+        "varsIgnorePattern": "^_"
+      }
+    ]
   }
 }

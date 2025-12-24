@@ -1,0 +1,16 @@
+# Build output
+dist/
+
+# Test coverage
+coverage/
+
+# Dependencies
+node_modules/
+
+# Package manager files
+package-lock.json
+pnpm-lock.yaml
+yarn.lock
+
+# Data files
+src/models/json/db.json
