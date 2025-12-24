@@ -27,6 +27,9 @@ export const usersApi = {
         return Boom.serverUnavailable("Database Error");
       }
     },
+    tags: ["api"],
+    description: "Authenticate user",
+    notes: "Authenticates a user with email and password, returns a JWT token",
   },
 
   signup: {
@@ -45,6 +48,9 @@ export const usersApi = {
         return Boom.serverUnavailable("Database Error");
       }
     },
+    tags: ["api"],
+    description: "Register a new user",
+    notes: "Creates a new user account with email and password",
   },
 
   logout: {
@@ -53,5 +59,8 @@ export const usersApi = {
       h.unstate(process.env.cookie_name!, { path: "/api/" });
       return h.response({ success: true }).code(200);
     },
+    tags: ["api"],
+    description: "Logout user",
+    notes: "Clears the authentication cookie and logs out the user",
   },
 };

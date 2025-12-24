@@ -13,6 +13,9 @@ export const trailsApi = {
         return Boom.serverUnavailable("Unexpected Error");
       }
     },
+    tags: ["api"],
+    description: "Get all trails",
+    notes: "Returns all trails from the database",
   },
 
   findOne: {
@@ -28,6 +31,9 @@ export const trailsApi = {
         return Boom.serverUnavailable("Unexpected Error");
       }
     },
+    tags: ["api"],
+    description: "Get a trail by ID",
+    notes: "Returns a single trail by its ID",
   },
 
   create: {
@@ -40,6 +46,9 @@ export const trailsApi = {
         return Boom.serverUnavailable("Unexpected Error");
       }
     },
+    tags: ["api"],
+    description: "Create a new trail",
+    notes: "Creates a new trail and returns the created trail",
   },
 
   update: {
@@ -56,6 +65,9 @@ export const trailsApi = {
         return Boom.serverUnavailable("Unexpected Error");
       }
     },
+    tags: ["api"],
+    description: "Update a trail",
+    notes: "Updates an existing trail by ID and returns the updated trail",
   },
 
   deleteOne: {
@@ -68,6 +80,9 @@ export const trailsApi = {
         return Boom.serverUnavailable("Unexpected Error");
       }
     },
+    tags: ["api"],
+    description: "Delete a trail",
+    notes: "Deletes a single trail by its ID",
   },
 
   deleteAll: {
@@ -79,5 +94,8 @@ export const trailsApi = {
         return Boom.serverUnavailable("Unexpected Error");
       }
     },
+    tags: ["api"],
+    description: "Delete all trails",
+    notes: "Deletes all trails from the database",
   },
 };
