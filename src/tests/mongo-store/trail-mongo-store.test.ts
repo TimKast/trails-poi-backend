@@ -47,7 +47,7 @@ describe("TrailMongoStore", () => {
 
     it("returns all trails", async () => {
       const trails = await trailMongoStore.find();
-      expect(trails).toHaveLength(4);
+      expect(trails).toHaveLength(testTrails.length + 1);
     });
   });
 
