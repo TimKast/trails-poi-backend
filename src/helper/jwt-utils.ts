@@ -56,7 +56,6 @@ export function getUserIdFromRequest(request: Request): string | null {
 
 export function requireAdmin(request: Request, _h: ResponseToolkit) {
   const credentials = request.auth.credentials as JwtPayload;
-  console.log("Credentials:", credentials);
   if (!credentials || credentials.role !== "admin") {
     throw Boom.forbidden("Admin access required");
   }
