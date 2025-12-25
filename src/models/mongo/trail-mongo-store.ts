@@ -10,6 +10,7 @@ export const trailMongoStore: TrailStore = {
 
   async findById(id: string): Promise<Trail | null> {
     const trail = await TrailSchema.findById(id).lean();
+    if (!trail) return null;
     return trail;
   },
 
@@ -20,7 +21,9 @@ export const trailMongoStore: TrailStore = {
   },
 
   async deleteById(id: string): Promise<void> {
-    await TrailSchema.deleteOne({ _id: id });
+    const trail = await TrailSchema.findById(id);
+    if (!trail) throw new Error("Trail not found");
+    await trail.deleteOne();
   },
 
   async deleteAll(): Promise<void> {
@@ -32,7 +35,7 @@ export const trailMongoStore: TrailStore = {
     if (trail) {
       Object.assign(trail, updatedTrail);
       const updated = await trail.save();
-      return updated;
+      return updated.toObject();
     }
     return null;
   },

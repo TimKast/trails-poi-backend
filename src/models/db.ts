@@ -1,3 +1,4 @@
+import { TrailStore, UserStore } from "../types/store-types";
 import { trailJsonStore } from "./json/trail-json-store";
 import { userJsonStore } from "./json/user-json-store";
 import { connectMongo } from "./mongo/connect";
@@ -5,8 +6,8 @@ import { trailMongoStore } from "./mongo/trail-mongo-store";
 import { userMongoStore } from "./mongo/user-mongo-store";
 
 type Db = {
-  userStore: typeof userJsonStore | null;
-  trailStore: typeof trailJsonStore | null;
+  userStore: UserStore | null;
+  trailStore: TrailStore | null;
 };
 
 export const db: Db = {

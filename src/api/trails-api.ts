@@ -12,7 +12,8 @@ export const trailsApi = {
       try {
         const trails = await db.trailStore!.find();
         return h.response(trails).code(200);
-      } catch {
+      } catch (error) {
+        console.error(error);
         return Boom.serverUnavailable("Unexpected Error");
       }
     },
@@ -31,7 +32,8 @@ export const trailsApi = {
           return h.response(trail).code(200);
         }
         return Boom.notFound("No Trail with this id");
-      } catch {
+      } catch (error) {
+        console.error(error);
         return Boom.serverUnavailable("Unexpected Error");
       }
     },
@@ -48,7 +50,8 @@ export const trailsApi = {
         const data = request.payload as Omit<Trail, "_id">;
         const trail = await db.trailStore!.create(data);
         return h.response(trail).code(201);
-      } catch {
+      } catch (error) {
+        console.error(error);
         return Boom.serverUnavailable("Unexpected Error");
       }
     },
@@ -69,7 +72,8 @@ export const trailsApi = {
           return h.response(updatedTrail).code(200);
         }
         return Boom.notFound("No Trail with this id");
-      } catch {
+      } catch (error) {
+        console.error(error);
         return Boom.serverUnavailable("Unexpected Error");
       }
     },
@@ -86,7 +90,11 @@ export const trailsApi = {
         const trailId = request.params.id as string;
         await db.trailStore!.deleteById(trailId);
         return h.response({ success: true }).code(204);
-      } catch {
+      } catch (error) {
+        console.error(error);
+        if (error instanceof Error && error.message === "Trail not found") {
+          return Boom.notFound("No Trail with this id");
+        }
         return Boom.serverUnavailable("Unexpected Error");
       }
     },
@@ -102,7 +110,8 @@ export const trailsApi = {
       try {
         await db.trailStore!.deleteAll();
         return h.response({ success: true }).code(204);
-      } catch {
+      } catch (error) {
+        console.error(error);
         return Boom.serverUnavailable("Unexpected Error");
       }
     },
