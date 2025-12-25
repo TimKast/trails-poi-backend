@@ -4,6 +4,7 @@ import Vision from "@hapi/vision";
 import "dotenv/config";
 import * as jwt from "hapi-auth-jwt2";
 import HapiSwagger from "hapi-swagger";
+import Joi from "joi";
 import { apiRoutes } from "./api-routes";
 import { validate } from "./api/jwt-utils";
 import { initDb } from "./models/db";
@@ -31,6 +32,7 @@ async function init() {
     port: process.env.PORT || 3000,
     host: "localhost",
   });
+  server.validator(Joi);
   await initServerSecurity(server);
   await server.register([
     Inert,

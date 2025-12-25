@@ -1,6 +1,9 @@
 import Boom from "@hapi/boom";
 import { Request, ResponseToolkit } from "@hapi/hapi";
+import { validationError } from "../helper/logger";
 import { db } from "../models/db";
+import { IdSpec, SuccessSpec } from "../models/joi-schemas/common-spec";
+import { TrailArraySpec, TrailSpec, TrailSpecPlus } from "../models/joi-schemas/trail-spec";
 import { Trail } from "../types/model-types";
 
 export const trailsApi = {
@@ -16,6 +19,7 @@ export const trailsApi = {
     tags: ["api"],
     description: "Get all trails",
     notes: "Returns all trails from the database",
+    response: { schema: TrailArraySpec, failAction: validationError },
   },
 
   findOne: {
@@ -34,6 +38,8 @@ export const trailsApi = {
     tags: ["api"],
     description: "Get a trail by ID",
     notes: "Returns a single trail by its ID",
+    validate: { params: { id: IdSpec }, failAction: validationError },
+    response: { schema: TrailSpecPlus, failAction: validationError },
   },
 
   create: {
@@ -49,6 +55,8 @@ export const trailsApi = {
     tags: ["api"],
     description: "Create a new trail",
     notes: "Creates a new trail and returns the created trail",
+    validate: { payload: TrailSpec, failAction: validationError },
+    response: { schema: TrailSpecPlus, failAction: validationError },
   },
 
   update: {
@@ -68,6 +76,8 @@ export const trailsApi = {
     tags: ["api"],
     description: "Update a trail",
     notes: "Updates an existing trail by ID and returns the updated trail",
+    validate: { params: { id: IdSpec }, payload: TrailSpec, failAction: validationError },
+    response: { schema: TrailSpecPlus, failAction: validationError },
   },
 
   deleteOne: {
@@ -75,7 +85,7 @@ export const trailsApi = {
       try {
         const trailId = request.params.id as string;
         await db.trailStore!.deleteById(trailId);
-        return h.response().code(204);
+        return h.response({ success: true }).code(204);
       } catch {
         return Boom.serverUnavailable("Unexpected Error");
       }
@@ -83,13 +93,15 @@ export const trailsApi = {
     tags: ["api"],
     description: "Delete a trail",
     notes: "Deletes a single trail by its ID",
+    validate: { params: { id: IdSpec }, failAction: validationError },
+    response: { schema: SuccessSpec, failAction: validationError },
   },
 
   deleteAll: {
     handler: async function (request: Request, h: ResponseToolkit) {
       try {
         await db.trailStore!.deleteAll();
-        return h.response().code(204);
+        return h.response({ success: true }).code(204);
       } catch {
         return Boom.serverUnavailable("Unexpected Error");
       }
@@ -97,5 +109,6 @@ export const trailsApi = {
     tags: ["api"],
     description: "Delete all trails",
     notes: "Deletes all trails from the database",
+    response: { schema: SuccessSpec, failAction: validationError },
   },
 };
