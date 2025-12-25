@@ -1,7 +1,10 @@
 import Boom from "@hapi/boom";
 import { Request, ResponseToolkit } from "@hapi/hapi";
 import { createToken } from "../api/jwt-utils";
+import { validationError } from "../helper/logger";
 import { db } from "../models/db";
+import { JwtAuthSpec, SuccessSpec } from "../models/joi-schemas/common-spec";
+import { UserSpec } from "../models/joi-schemas/user-spec";
 
 export const usersApi = {
   authenticate: {
@@ -27,6 +30,11 @@ export const usersApi = {
         return Boom.serverUnavailable("Database Error");
       }
     },
+    tags: ["api"],
+    description: "Authenticate user",
+    notes: "Authenticates a user with email and password, returns a JWT token",
+    validate: { payload: UserSpec, failAction: validationError },
+    response: { schema: JwtAuthSpec, failAction: validationError },
   },
 
   signup: {
@@ -45,6 +53,11 @@ export const usersApi = {
         return Boom.serverUnavailable("Database Error");
       }
     },
+    tags: ["api"],
+    description: "Register a new user",
+    notes: "Creates a new user account with email and password",
+    validate: { payload: UserSpec, failAction: validationError },
+    response: { schema: SuccessSpec, failAction: validationError },
   },
 
   logout: {
@@ -53,5 +66,9 @@ export const usersApi = {
       h.unstate(process.env.cookie_name!, { path: "/api/" });
       return h.response({ success: true }).code(200);
     },
+    tags: ["api"],
+    description: "Logout user",
+    notes: "Clears the authentication cookie and logs out the user",
+    response: { schema: SuccessSpec, failAction: validationError },
   },
 };
