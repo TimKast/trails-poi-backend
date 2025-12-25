@@ -1,10 +1,10 @@
 import Boom from "@hapi/boom";
 import { Request, ResponseToolkit } from "@hapi/hapi";
-import { createToken } from "../helper/jwt-utils";
+import { createToken, requireAdmin } from "../helper/jwt-utils";
 import { validationError } from "../helper/logger";
 import { db } from "../models/db";
 import { JwtAuthSpec, SuccessSpec } from "../models/joi-schemas/common-spec";
-import { UserSpec } from "../models/joi-schemas/user-spec";
+import { UserArraySpec, UserSpec } from "../models/joi-schemas/user-spec";
 
 export const usersApi = {
   authenticate: {
@@ -70,5 +70,22 @@ export const usersApi = {
     description: "Logout user",
     notes: "Clears the authentication cookie and logs out the user",
     response: { schema: SuccessSpec, failAction: validationError },
+  },
+
+  find: {
+    pre: [requireAdmin],
+    handler: async function (_request: Request, h: ResponseToolkit) {
+      try {
+        const users = await db.userStore!.find();
+        return h.response(users).code(200);
+      } catch (error) {
+        console.error("Error fetching users:", error);
+        return Boom.serverUnavailable("Database Error");
+      }
+    },
+    tags: ["api"],
+    description: "Get all users",
+    notes: "Returns a list of all registered users",
+    response: { schema: UserArraySpec, failAction: validationError },
   },
 };

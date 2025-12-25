@@ -33,6 +33,7 @@ describe("UserMongoStore", () => {
       expect(user._id).toBeDefined();
       expect(user.email).toBe("newuser@example.com");
       expect(user.password).toBe("password123");
+      expect(user.role).toBe("user");
     });
   });
 

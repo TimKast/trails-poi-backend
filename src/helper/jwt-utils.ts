@@ -1,4 +1,5 @@
-import { Request } from "@hapi/hapi";
+import Boom from "@hapi/boom";
+import { Request, ResponseToolkit } from "@hapi/hapi";
 import jwt, { JwtPayload } from "jsonwebtoken";
 import { db } from "../models/db.js";
 import { User } from "../types/model-types.js";
@@ -9,7 +10,7 @@ export function createToken(user: User): string {
   const payload = {
     id: user._id,
     email: user.email,
-    scope: [],
+    scope: user.role,
   };
   const options: jwt.SignOptions = {
     algorithm: "HS256",
@@ -24,7 +25,7 @@ export function decodeToken(token: string): JwtPayload | null {
     return {
       id: decoded.id as string,
       email: decoded.email as string,
-      scope: decoded.scope as string[],
+      scope: decoded.scope as string,
     } as JwtPayload;
   } catch (error) {
     console.log(error);
@@ -51,4 +52,12 @@ export function getUserIdFromRequest(request: Request): string | null {
     userId = null;
   }
   return userId;
+}
+
+export function requireAdmin(request: Request, _h: ResponseToolkit) {
+  const credentials = request.auth.credentials as JwtPayload;
+  if (!credentials || credentials.scope !== "admin") {
+    throw Boom.forbidden("Admin access required");
+  }
+  return true;
 }

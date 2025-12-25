@@ -9,6 +9,7 @@ export const UserSpec = Joi.object({
 export const UserSpecPlus = UserSpec.keys({
   _id: IdSpec,
   __v: Joi.number(),
+  role: Joi.string().valid("admin", "user").example("user"),
 }).label("UserSpecPlus");
 
 export const UserArraySpec = Joi.array().items(UserSpecPlus).label("UserArraySpec");

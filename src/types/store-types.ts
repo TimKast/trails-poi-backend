@@ -9,6 +9,7 @@ interface Store<T> {
 }
 
 export interface UserStore extends Store<User> {
+  create(user: Omit<User, "_id" | "role">): Promise<User>;
   findByEmail(email: string): Promise<User | null>;
 }
 

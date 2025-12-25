@@ -13,7 +13,7 @@ export const userMongoStore: UserStore = {
     return user;
   },
 
-  async create(user: Omit<User, "_id">): Promise<User> {
+  async create(user: Omit<User, "_id" | "role">): Promise<User> {
     const newUser = new UserSchema(user);
     const userObj = await newUser.save();
     return userObj.toObject();
