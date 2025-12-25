@@ -20,9 +20,9 @@ export const trailJsonStore: TrailStore = {
     return newTrail;
   },
 
-  async findById(id: string): Promise<Trail | undefined> {
+  async findById(id: string): Promise<Trail | null> {
     await db.read();
-    return db.data.trails.find((trail) => trail._id === id);
+    return db.data.trails.find((trail) => trail._id === id) ?? null;
   },
 
   async deleteById(id: string) {
@@ -40,13 +40,13 @@ export const trailJsonStore: TrailStore = {
     await db.write();
   },
 
-  async update(id: string, updatedTrail: Partial<Omit<Trail, "_id">>): Promise<Trail | undefined> {
+  async update(id: string, updatedTrail: Partial<Omit<Trail, "_id">>): Promise<Trail | null> {
     const trail = db.data.trails.find((trail) => trail._id === id);
     if (trail) {
       Object.assign(trail, updatedTrail);
       await db.write();
       return trail;
     }
-    return undefined;
+    return null;
   },
 };

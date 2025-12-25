@@ -53,9 +53,9 @@ describe("UserJsonStore", () => {
       expect(found).toEqual(created);
     });
 
-    it("returns undefined when user not found", async () => {
+    it("returns null when user not found", async () => {
       const found = await userJsonStore.findById("nonexistent");
-      expect(found).toBeUndefined();
+      expect(found).toBeNull();
     });
   });
 
@@ -70,9 +70,9 @@ describe("UserJsonStore", () => {
       expect(found).toEqual(created);
     });
 
-    it("returns undefined when user not found", async () => {
+    it("returns null when user not found", async () => {
       const found = await userJsonStore.findByEmail("notfound@example.com");
-      expect(found).toBeUndefined();
+      expect(found).toBeNull();
     });
   });
 
@@ -86,7 +86,7 @@ describe("UserJsonStore", () => {
       await userJsonStore.deleteById(created._id);
 
       const found = await userJsonStore.findById(created._id);
-      expect(found).toBeUndefined();
+      expect(found).toBeNull();
     });
 
     it("handles deletion of nonexistent user gracefully", async () => {

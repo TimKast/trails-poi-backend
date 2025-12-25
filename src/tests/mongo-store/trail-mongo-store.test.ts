@@ -1,14 +1,31 @@
-import { beforeEach, describe, expect, it } from "vitest";
-import { trailJsonStore } from "../../models/json/trail-json-store";
+import { afterAll, beforeAll, beforeEach, describe, expect, it } from "vitest";
+import { connectMongo, disconnectMongo } from "../../models/mongo/connect";
+import { trailMongoStore } from "../../models/mongo/trail-mongo-store";
+import { Trail } from "../../types/model-types";
+import { singleTrail, testTrails } from "../fixtures/trails";
 
-describe("TrailJsonStore", () => {
+describe("TrailMongoStore", () => {
+  let created: Trail;
+
+  beforeAll(async () => {
+    await connectMongo();
+  });
+
+  afterAll(async () => {
+    await disconnectMongo();
+  });
+
   beforeEach(async () => {
-    await trailJsonStore.deleteAll();
+    await trailMongoStore.deleteAll();
+    for (const trail of testTrails) {
+      await trailMongoStore.create(trail);
+    }
+    created = await trailMongoStore.create(singleTrail);
   });
 
   describe("create", () => {
     it("creates a trail with generated _id", async () => {
-      const trail = await trailJsonStore.create({
+      const trail = await trailMongoStore.create({
         name: "Test Trail",
         description: "A trail for testing",
         location: { lat: 10, lng: 20 },
@@ -23,56 +40,38 @@ describe("TrailJsonStore", () => {
 
   describe("find", () => {
     it("returns empty array when no trails exist", async () => {
-      const trails = await trailJsonStore.find();
+      await trailMongoStore.deleteAll();
+      const trails = await trailMongoStore.find();
       expect(trails).toEqual([]);
     });
 
     it("returns all trails", async () => {
-      const trail1 = await trailJsonStore.create({
-        name: "Trail 1",
-        description: "First trail",
-        location: { lat: 1, lng: 2 },
-      });
-      const trail2 = await trailJsonStore.create({
-        name: "Trail 2",
-        description: "Second trail",
-        location: { lat: 3, lng: 4 },
-      });
-
-      const trails = await trailJsonStore.find();
-      expect(trails).toHaveLength(2);
-      expect(trails).toContainEqual(trail1);
-      expect(trails).toContainEqual(trail2);
+      const trails = await trailMongoStore.find();
+      expect(trails).toHaveLength(4);
     });
   });
 
   describe("findById", () => {
     it("returns trail by id", async () => {
-      const created = await trailJsonStore.create({
-        name: "Find Trail",
-        description: "Trail to find",
-        location: { lat: 5, lng: 6 },
-      });
-
-      const found = await trailJsonStore.findById(created._id);
+      const found = await trailMongoStore.findById(created._id);
       expect(found).toEqual(created);
     });
 
     it("returns null when trail not found", async () => {
-      const found = await trailJsonStore.findById("nonexistent");
+      const found = await trailMongoStore.findById("507f1f77bcf86cd799439011");
       expect(found).toBeNull();
     });
   });
 
   describe("update", () => {
     it("updates an existing trail", async () => {
-      const created = await trailJsonStore.create({
+      const created = await trailMongoStore.create({
         name: "Old Trail",
         description: "Old description",
         location: { lat: 7, lng: 8 },
       });
 
-      const updated = await trailJsonStore.update(created._id, {
+      const updated = await trailMongoStore.update(created._id, {
         name: "Updated Trail",
         description: "Updated description",
         location: { lat: 3, lng: 5 },
@@ -85,14 +84,7 @@ describe("TrailJsonStore", () => {
     });
 
     it("returns null when updating non-existing trail", async () => {
-      const fakeTrail = {
-        _id: "fake-id",
-        name: "Fake Trail",
-        description: "Does not exist",
-        location: { lat: 0, lng: 0 },
-      };
-
-      const updated = await trailJsonStore.update(fakeTrail._id, {
+      const updated = await trailMongoStore.update("507f1f77bcf86cd799439011", {
         name: "Should Not Update",
       });
 
@@ -102,35 +94,35 @@ describe("TrailJsonStore", () => {
 
   describe("deleteById", () => {
     it("deletes a trail by id", async () => {
-      const created = await trailJsonStore.create({
+      const created = await trailMongoStore.create({
         name: "Delete Trail",
         description: "Trail to delete",
         location: { lat: 9, lng: 10 },
       });
 
-      await trailJsonStore.deleteById(created._id);
+      await trailMongoStore.deleteById(created._id);
 
-      const found = await trailJsonStore.findById(created._id);
+      const found = await trailMongoStore.findById(created._id);
       expect(found).toBeNull();
     });
   });
 
   describe("deleteAll", () => {
     it("deletes all trails", async () => {
-      await trailJsonStore.create({
+      await trailMongoStore.create({
         name: "Trail A",
         description: "First trail",
         location: { lat: 11, lng: 12 },
       });
-      await trailJsonStore.create({
+      await trailMongoStore.create({
         name: "Trail B",
         description: "Second trail",
         location: { lat: 13, lng: 14 },
       });
 
-      await trailJsonStore.deleteAll();
+      await trailMongoStore.deleteAll();
 
-      const trails = await trailJsonStore.find();
+      const trails = await trailMongoStore.find();
       expect(trails).toHaveLength(0);
     });
   });

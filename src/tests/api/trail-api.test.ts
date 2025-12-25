@@ -10,7 +10,7 @@ describe("TrailApi", () => {
   let created: Trail;
 
   beforeAll(async () => {
-    server = await createTestServer();
+    server = await createTestServer("json");
   });
 
   beforeEach(async () => {
@@ -99,7 +99,7 @@ describe("TrailApi", () => {
 
       expect(response.statusCode).toBe(204);
       const found = await db.trailStore!.findById(created._id);
-      expect(found).toBeUndefined();
+      expect(found).toBeNull();
     });
 
     it("returns 204 when deleting non-existent trail", async () => {

@@ -6,7 +6,7 @@ import * as jwt from "hapi-auth-jwt2";
 import HapiSwagger from "hapi-swagger";
 import Joi from "joi";
 import { apiRoutes } from "./api-routes";
-import { validate } from "./api/jwt-utils";
+import { validate } from "./helper/jwt-utils";
 import { initDb } from "./models/db";
 
 const swaggerOptions = {
@@ -53,4 +53,4 @@ process.on("unhandledRejection", (err) => {
 });
 
 void init();
-initDb();
+initDb("mongo");

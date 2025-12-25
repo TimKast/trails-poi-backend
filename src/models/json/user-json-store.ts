@@ -20,14 +20,14 @@ export const userJsonStore: UserStore = {
     return newUser;
   },
 
-  async findById(id: string): Promise<User | undefined> {
+  async findById(id: string): Promise<User | null> {
     await db.read();
-    return db.data.users.find((user) => user._id === id);
+    return db.data.users.find((user) => user._id === id) ?? null;
   },
 
-  async findByEmail(email: string): Promise<User | undefined> {
+  async findByEmail(email: string): Promise<User | null> {
     await db.read();
-    return db.data.users.find((user) => user.email === email);
+    return db.data.users.find((user) => user.email === email) ?? null;
   },
 
   async deleteById(id: string) {
