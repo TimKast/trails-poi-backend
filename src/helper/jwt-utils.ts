@@ -1,7 +1,7 @@
 import { Request } from "@hapi/hapi";
 import jwt, { JwtPayload } from "jsonwebtoken";
 import { db } from "../models/db.js";
-import { User } from "../types/model-types";
+import { User } from "../types/model-types.js";
 
 const jwtSecret = process.env.jwt_secret as string;
 
@@ -27,7 +27,7 @@ export function decodeToken(token: string): JwtPayload | null {
       scope: decoded.scope as string[],
     } as JwtPayload;
   } catch (error) {
-      console.log(error);
+    console.log(error);
   }
   return null;
 }

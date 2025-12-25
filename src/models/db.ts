@@ -1,9 +1,11 @@
-import { trailJsonStore } from "./json/trail-json-store";
-import { userJsonStore } from "./json/user-json-store";
+import { TrailStore, UserStore } from "../types/store-types";
+import { connectMongo } from "./mongo/connect";
+import { trailMongoStore } from "./mongo/trail-mongo-store";
+import { userMongoStore } from "./mongo/user-mongo-store";
 
 type Db = {
-  userStore: typeof userJsonStore | null;
-  trailStore: typeof trailJsonStore | null;
+  userStore: UserStore | null;
+  trailStore: TrailStore | null;
 };
 
 export const db: Db = {
@@ -11,7 +13,8 @@ export const db: Db = {
   trailStore: null,
 };
 
-export function initDb() {
-  db.userStore = userJsonStore;
-  db.trailStore = trailJsonStore;
+export async function initDb() {
+  await connectMongo();
+  db.userStore = userMongoStore;
+  db.trailStore = trailMongoStore;
 }

@@ -8,6 +8,7 @@ import { createTestServer } from "../test-server";
 describe("TrailApi", () => {
   let server: Server;
   let created: Trail;
+  const nonexistingId = "111111111111111111111111";
 
   beforeAll(async () => {
     server = await createTestServer();
@@ -41,14 +42,18 @@ describe("TrailApi", () => {
 
       expect(response.statusCode).toBe(200);
       const body = JSON.parse(response.payload) as Trail;
-      expect(body._id).toBe(created._id);
+      expect(body._id).toBe(created._id.toString());
       expect(body.name).toBe(created.name);
     });
 
     it("returns 404 when trail not found", async () => {
-      const response = await server.inject({ method: "GET", url: "/api/trails/nonexistent" });
-
+      const response = await server.inject({ method: "GET", url: `/api/trails/${nonexistingId}` });
       expect(response.statusCode).toBe(404);
+    });
+
+    it("returns 503 for invalid id", async () => {
+      const response = await server.inject({ method: "GET", url: "/api/trails/invalid-id" });
+      expect(response.statusCode).toBe(503);
     });
   });
 
@@ -85,11 +90,21 @@ describe("TrailApi", () => {
     it("returns 404 when updating non-existent trail", async () => {
       const response = await server.inject({
         method: "PUT",
-        url: "/api/trails/nonexistent",
+        url: `/api/trails/${nonexistingId}`,
         payload: { name: "Updated Trail" },
       });
 
       expect(response.statusCode).toBe(404);
+    });
+
+    it("returns 503 for invalid id", async () => {
+      const response = await server.inject({
+        method: "PUT",
+        url: "/api/trails/invalid-id",
+        payload: { name: "Updated Trail" },
+      });
+
+      expect(response.statusCode).toBe(503);
     });
   });
 
@@ -99,13 +114,19 @@ describe("TrailApi", () => {
 
       expect(response.statusCode).toBe(204);
       const found = await db.trailStore!.findById(created._id);
-      expect(found).toBeUndefined();
+      expect(found).toBeNull();
     });
 
-    it("returns 204 when deleting non-existent trail", async () => {
-      const response = await server.inject({ method: "DELETE", url: "/api/trails/nonexistent" });
+    it("returns 404 when deleting non-existent trail", async () => {
+      const response = await server.inject({ method: "DELETE", url: `/api/trails/${nonexistingId}` });
 
-      expect(response.statusCode).toBe(204);
+      expect(response.statusCode).toBe(404);
+    });
+
+    it("returns 503 for invalid id", async () => {
+      const response = await server.inject({ method: "DELETE", url: "/api/trails/invalid-id" });
+
+      expect(response.statusCode).toBe(503);
     });
   });
 

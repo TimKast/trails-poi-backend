@@ -1,6 +1,6 @@
 import Boom from "@hapi/boom";
 import { Request, ResponseToolkit } from "@hapi/hapi";
-import { createToken } from "../api/jwt-utils";
+import { createToken } from "../helper/jwt-utils";
 import { validationError } from "../helper/logger";
 import { db } from "../models/db";
 import { JwtAuthSpec, SuccessSpec } from "../models/joi-schemas/common-spec";
