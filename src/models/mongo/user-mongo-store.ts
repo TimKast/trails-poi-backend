@@ -31,4 +31,9 @@ export const userMongoStore: UserStore = {
     const user = await UserSchema.findOne({ email }).lean();
     return user;
   },
+
+  async makeAdmin(id: string): Promise<User | null> {
+    const user = await UserSchema.findByIdAndUpdate(id, { role: "admin" }, { new: true }).lean();
+    return user;
+  },
 };

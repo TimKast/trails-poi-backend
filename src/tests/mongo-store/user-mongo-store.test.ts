@@ -2,7 +2,7 @@ import { afterAll, beforeAll, beforeEach, describe, expect, it } from "vitest";
 import { connectMongo, disconnectMongo } from "../../models/mongo/connect";
 import { userMongoStore } from "../../models/mongo/user-mongo-store";
 import { User } from "../../types/model-types";
-import { singleUser, testUsers } from "../fixtures/users";
+import { otherUser, singleUser, testUsers } from "../fixtures/users";
 
 describe("UserMongoStore", () => {
   let created: User;
@@ -25,14 +25,11 @@ describe("UserMongoStore", () => {
 
   describe("create", () => {
     it("creates a user with generated _id", async () => {
-      const user = await userMongoStore.create({
-        email: "newuser@example.com",
-        password: "password123",
-      });
+      const user = await userMongoStore.create(otherUser);
 
       expect(user._id).toBeDefined();
-      expect(user.email).toBe("newuser@example.com");
-      expect(user.password).toBe("password123");
+      expect(user.email).toBe(otherUser.email);
+      expect(user.password).toBe(otherUser.password);
       expect(user.role).toBe("user");
     });
   });
@@ -103,6 +100,14 @@ describe("UserMongoStore", () => {
 
       const users = await userMongoStore.find();
       expect(users).toHaveLength(0);
+    });
+  });
+
+  describe("makeAdmin", () => {
+    it("promotes a user to admin", async () => {
+      expect(created.role).toBe("user");
+      const user = await userMongoStore.makeAdmin(created._id);
+      expect(user!.role).toBe("admin");
     });
   });
 });

@@ -3,7 +3,7 @@ import { Request, ResponseToolkit } from "@hapi/hapi";
 import { createToken, requireAdmin } from "../helper/jwt-utils";
 import { validationError } from "../helper/logger";
 import { db } from "../models/db";
-import { JwtAuthSpec, SuccessSpec } from "../models/joi-schemas/common-spec";
+import { IdSpec, JwtAuthSpec, SuccessSpec } from "../models/joi-schemas/common-spec";
 import { UserArraySpec, UserSpec } from "../models/joi-schemas/user-spec";
 
 export const usersApi = {
@@ -87,5 +87,25 @@ export const usersApi = {
     description: "Get all users",
     notes: "Returns a list of all registered users",
     response: { schema: UserArraySpec, failAction: validationError },
+  },
+
+  makeAdmin: {
+    pre: [requireAdmin],
+    handler: async function (request: Request, h: ResponseToolkit) {
+      const userId = request.params.id as string;
+      try {
+        const updated = await db.userStore!.makeAdmin(userId);
+        if (updated) return h.response({ success: true }).code(200);
+        return Boom.notFound("No User with this Id");
+      } catch (error) {
+        console.log(error);
+        return Boom.serverUnavailable("Database Error");
+      }
+    },
+    tags: ["api"],
+    description: "Promote user to admin",
+    notes: "Sets the role of a user to admin based on user ID",
+    validate: { params: { id: IdSpec }, failAction: validationError },
+    response: { schema: SuccessSpec, failAction: validationError },
   },
 };

@@ -1,6 +1,6 @@
 import { User } from "../../types/model-types";
 
-export const testUsers: Omit<User, "_id">[] = [
+export const testUsers: Omit<User, "_id" | "role">[] = [
   {
     email: "homer@simpson.com",
     password: "secret",
@@ -15,12 +15,12 @@ export const testUsers: Omit<User, "_id">[] = [
   },
 ];
 
-export const singleUser: Omit<User, "_id"> = {
+export const singleUser: Omit<User, "_id" | "role"> = {
   email: "test@example.com",
   password: "secret",
 };
 
-export const otherUser: Omit<User, "_id"> = {
+export const otherUser: Omit<User, "_id" | "role"> = {
   email: "other@example.com",
   password: "secret",
 };
