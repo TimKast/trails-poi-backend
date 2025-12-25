@@ -39,7 +39,6 @@
     "hapi-swagger": "17.3.2",
     "joi": "17.13.3",
     "jsonwebtoken": "9.0.3",
-    "lowdb": "7.0.1",
     "mongoose": "9.0.2",
     "uuid": "13.0.0"
   }

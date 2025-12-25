@@ -11,7 +11,7 @@ describe("TrailApi", () => {
   const nonexistingId = "111111111111111111111111";
 
   beforeAll(async () => {
-    server = await createTestServer("mongo");
+    server = await createTestServer();
   });
 
   beforeEach(async () => {

@@ -53,4 +53,4 @@ process.on("unhandledRejection", (err) => {
 });
 
 void init();
-await initDb("mongo");
+await initDb();

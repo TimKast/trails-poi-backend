@@ -9,7 +9,7 @@ describe("AuthApi", () => {
   let server: Server;
 
   beforeAll(async () => {
-    server = await createTestServer("mongo");
+    server = await createTestServer();
     await initServerSecurity(server);
   });
   afterAll(async () => {
