@@ -3,7 +3,7 @@ import { Request, ResponseToolkit } from "@hapi/hapi";
 import { validationError } from "../helper/logger";
 import { db } from "../models/db";
 import { IdSpec, SuccessSpec } from "../models/joi-schemas/common-spec";
-import { TrailArraySpec, TrailSpec, TrailSpecPlus } from "../models/joi-schemas/trail-spec";
+import { TrailArraySpec, TrailPartialSpec, TrailSpec, TrailSpecPlus } from "../models/joi-schemas/trail-spec";
 import { Trail } from "../types/model-types";
 
 export const trailsApi = {
@@ -63,7 +63,7 @@ export const trailsApi = {
     handler: async function (request: Request, h: ResponseToolkit) {
       try {
         const trailId = request.params.id as string;
-        const data = request.payload as Partial<Trail>;
+        const data = request.payload as Partial<Omit<Trail, "_id">>;
         const updatedTrail = await db.trailStore!.update(trailId, data);
         if (updatedTrail) {
           return h.response(updatedTrail).code(200);
@@ -76,7 +76,7 @@ export const trailsApi = {
     tags: ["api"],
     description: "Update a trail",
     notes: "Updates an existing trail by ID and returns the updated trail",
-    validate: { params: { id: IdSpec }, payload: TrailSpec, failAction: validationError },
+    validate: { params: { id: IdSpec }, payload: TrailPartialSpec, failAction: validationError },
     response: { schema: TrailSpecPlus, failAction: validationError },
   },
 

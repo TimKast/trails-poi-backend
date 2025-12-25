@@ -7,6 +7,12 @@ export const TrailSpec = Joi.object({
   location: LocationSpec,
 }).label("TrailSpec");
 
+export const TrailPartialSpec = Joi.object({
+  name: Joi.string().example("Sunny Trail").optional(),
+  description: Joi.string().example("A beautiful trail with scenic views").optional(),
+  location: LocationSpec.optional(),
+}).label("TrailPartialSpec");
+
 export const TrailSpecPlus = TrailSpec.keys({
   _id: Joi.alternatives().try(Joi.string(), Joi.object()).description("a valid ID"),
 }).label("TrailSpecPlus");
