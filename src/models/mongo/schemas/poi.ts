@@ -12,7 +12,7 @@ const poiSchema = new Schema<Poi>({
     type: String,
     enum: ["hut", "lake", "peak"],
   },
-  images: [String],
+  images: { type: [String], default: [] },
 });
 
 export const PoiSchema = model("Poi", poiSchema);
