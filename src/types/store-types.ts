@@ -9,7 +9,9 @@ interface Store<T> {
 }
 
 export interface UserStore extends Store<User> {
+  create(user: Omit<User, "_id" | "role">): Promise<User>;
   findByEmail(email: string): Promise<User | null>;
+  makeAdmin(id: string): Promise<User | null>;
 }
 
 export interface TrailStore extends Store<Trail> {

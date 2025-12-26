@@ -13,14 +13,16 @@ export const userMongoStore: UserStore = {
     return user;
   },
 
-  async create(user: Omit<User, "_id">): Promise<User> {
+  async create(user: Omit<User, "_id" | "role">): Promise<User> {
     const newUser = new UserSchema(user);
     const userObj = await newUser.save();
     return userObj.toObject();
   },
 
   async deleteById(id: string): Promise<void> {
-    await UserSchema.deleteOne({ _id: id });
+    const user = await UserSchema.findById(id);
+    if (!user) throw new Error("User not found");
+    await user.deleteOne();
   },
 
   async deleteAll(): Promise<void> {
@@ -29,6 +31,11 @@ export const userMongoStore: UserStore = {
 
   async findByEmail(email: string): Promise<User | null> {
     const user = await UserSchema.findOne({ email }).lean();
+    return user;
+  },
+
+  async makeAdmin(id: string): Promise<User | null> {
+    const user = await UserSchema.findByIdAndUpdate(id, { role: "admin" }, { new: true }).lean();
     return user;
   },
 };

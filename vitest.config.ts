@@ -10,5 +10,7 @@ export default defineConfig({
       reporter: ["text", "html"], // Text + HTML Report
       clean: true, // alte Reports löschen
     },
+    sequence: { concurrent: false },
+    maxWorkers: 1,
   },
 });
