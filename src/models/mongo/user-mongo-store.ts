@@ -20,7 +20,9 @@ export const userMongoStore: UserStore = {
   },
 
   async deleteById(id: string): Promise<void> {
-    await UserSchema.deleteOne({ _id: id });
+    const user = await UserSchema.findById(id);
+    if (!user) throw new Error("User not found");
+    await user.deleteOne();
   },
 
   async deleteAll(): Promise<void> {

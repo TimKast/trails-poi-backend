@@ -3,12 +3,12 @@ import { afterAll, beforeAll, beforeEach, describe, expect, it } from "vitest";
 import { db } from "../../models/db";
 import { Trail } from "../../types/model-types";
 import { otherTrail, singleTrail, testTrails } from "../fixtures/trails";
+import { nonexistingId } from "../fixtures/utils";
 import { createTestServer } from "../test-server";
 
 describe("TrailApi", () => {
   let server: Server;
   let created: Trail;
-  const nonexistingId = "111111111111111111111111";
 
   beforeAll(async () => {
     server = await createTestServer();

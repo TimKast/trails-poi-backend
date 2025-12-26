@@ -24,3 +24,8 @@ export const otherUser: Omit<User, "_id" | "role"> = {
   email: "other@example.com",
   password: "secret",
 };
+
+export const adminUser: Omit<User, "_id" | "role"> = {
+  email: "admin@example.com",
+  password: "secret",
+};
