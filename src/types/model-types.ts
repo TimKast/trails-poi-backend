@@ -18,7 +18,7 @@ export interface Poi {
   _id: string;
   name: string;
   description: string;
-  location: { lat: number; lng: number };
+  location: { type: "Point"; coordinates: [number, number] };
   category: "hut" | "lake" | "peak";
   images: string[];
 }
