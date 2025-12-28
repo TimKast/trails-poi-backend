@@ -151,16 +151,16 @@ describe("PoiApi", () => {
 
   describe("POST /api/pois/{id}/image - addImage", () => {
     it("adds an image to a poi", async () => {
-      const imageUrl = "https://example.com/image.jpg";
+      const imageUri = "https://example.com/image.jpg";
       const response = await server.inject({
         method: "POST",
         url: `/api/pois/${created._id}/images`,
-        payload: { imageUrl },
+        payload: { imageUri },
       });
 
       expect(response.statusCode).toBe(200);
       const body = JSON.parse(response.payload) as Poi;
-      expect(body.images).toContain(imageUrl);
+      expect(body.images).toContain(imageUri);
       expect(body.images).toHaveLength(created.images.length + 1);
     });
 
@@ -178,7 +178,7 @@ describe("PoiApi", () => {
       const response = await server.inject({
         method: "POST",
         url: "/api/pois/invalid-id/images",
-        payload: { imageUrl: "https://example.com/image.jpg" },
+        payload: { imageUri: "https://example.com/image.jpg" },
       });
 
       expect(response.statusCode).toBe(503);

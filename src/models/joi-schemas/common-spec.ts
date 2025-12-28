@@ -17,10 +17,24 @@ export const JwtAuthSpec = Joi.object({
 
 export const LocationSpec = Joi.object({
   lat: Joi.number().min(-90).max(90).example(34.011286).required(),
-  lng: Joi.number().min(-180).max(180).example(-116.166868).required(),
+  lon: Joi.number().min(-180).max(180).example(-116.166868).required(),
 }).label("LocationSpec");
+
+const CoordinatesSpec = Joi.array()
+  .length(2)
+  .ordered(Joi.number().min(-180).max(180).example(-116.166868).label("Lon").required(), Joi.number().min(-90).max(90).example(34.011286).label("Lat").required())
+  .required()
+  .label("CoordinatesSpec");
+
+export const CoordsArraySpec = Joi.array().items(CoordinatesSpec).label("CoordsArraySpec");
 
 export const PointLocationSpec = Joi.object({
   type: Joi.string().valid("Point").example("Point").required(),
-  coordinates: Joi.array().length(2).ordered(Joi.number().min(-180).max(180).example(-116.166868), Joi.number().min(-90).max(90).example(34.011286)).required(),
+  coordinates: CoordinatesSpec,
 }).label("PointLocationSpec");
+
+export const ImageUriSpec = Joi.string().uri().example("https://example.com/image.jpg").label("ImageUriSpec");
+export const ImageUriObjSpec = Joi.object({
+  imageUri: ImageUriSpec.required(),
+}).label("ImageUriObjSpec");
+export const ImageUriArraySpec = Joi.array().items(ImageUriSpec).label("ImageUriArraySpec");

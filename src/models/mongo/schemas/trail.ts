@@ -1,4 +1,4 @@
-import {Schema, model} from "mongoose";
+import { Schema, model } from "mongoose";
 import { Trail } from "../../../types/model-types";
 
 const trailSchema = new Schema<Trail>({
@@ -6,7 +6,7 @@ const trailSchema = new Schema<Trail>({
   description: String,
   location: {
     lat: Number,
-    lng: Number,
+    lon: Number,
   },
 });
 
