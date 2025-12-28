@@ -1,5 +1,6 @@
 import { Server } from "@hapi/hapi";
 import { afterAll, beforeAll, beforeEach, describe, expect, it } from "vitest";
+import { connectMongo, disconnectMongo } from "../../helper/db-utils";
 import { db } from "../../models/db";
 import { Trail } from "../../types/model-types";
 import { otherTrail, singleTrail, testTrails } from "../fixtures/trails";
@@ -12,6 +13,7 @@ describe("TrailApi", () => {
 
   beforeAll(async () => {
     server = await createTestServer();
+    await connectMongo(`${process.env.test_db}trail-api`);
   });
 
   beforeEach(async () => {
@@ -23,6 +25,7 @@ describe("TrailApi", () => {
   });
 
   afterAll(async () => {
+    await disconnectMongo();
     await server.stop();
   });
 

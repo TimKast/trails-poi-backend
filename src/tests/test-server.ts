@@ -1,4 +1,5 @@
 import Hapi, { Server } from "@hapi/hapi";
+import "dotenv/config";
 import * as jwt from "hapi-auth-jwt2";
 import Joi from "joi";
 import { apiRoutes } from "../api-routes";
@@ -10,7 +11,7 @@ export async function createTestServer() {
   server.validator(Joi);
   server.route(apiRoutes);
   await server.initialize();
-  await initDb();
+  initDb();
   return server;
 }
 

@@ -6,6 +6,7 @@ import * as jwt from "hapi-auth-jwt2";
 import HapiSwagger from "hapi-swagger";
 import Joi from "joi";
 import { apiRoutes } from "./api-routes";
+import { connectMongo } from "./helper/db-utils";
 import { validate } from "./helper/jwt-utils";
 import { initDb } from "./models/db";
 
@@ -43,6 +44,7 @@ async function init() {
     },
   ]);
   server.route(apiRoutes);
+  await connectMongo();
   await server.start();
   console.log("Server running on %s", server.info.uri);
 }
@@ -53,4 +55,4 @@ process.on("unhandledRejection", (err) => {
 });
 
 void init();
-await initDb();
+initDb();

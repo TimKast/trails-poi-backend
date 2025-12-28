@@ -1,5 +1,6 @@
 import { Server } from "@hapi/hapi";
 import { afterAll, beforeAll, beforeEach, describe, expect, it } from "vitest";
+import { connectMongo, disconnectMongo } from "../../helper/db-utils";
 import { db } from "../../models/db";
 import { Poi } from "../../types/model-types";
 import { otherPoi, singlePoi, testPois } from "../fixtures/pois";
@@ -12,6 +13,7 @@ describe("PoiApi", () => {
 
   beforeAll(async () => {
     server = await createTestServer();
+    await connectMongo(`${process.env.test_db}poi-api`);
   });
 
   beforeEach(async () => {
@@ -23,6 +25,7 @@ describe("PoiApi", () => {
   });
 
   afterAll(async () => {
+    await disconnectMongo();
     await server.stop();
   });
 

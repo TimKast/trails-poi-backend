@@ -1,5 +1,5 @@
 import { afterAll, beforeAll, beforeEach, describe, expect, it } from "vitest";
-import { connectMongo, disconnectMongo } from "../../models/mongo/connect";
+import { connectMongo, disconnectMongo } from "../../helper/db-utils";
 import { trailMongoStore } from "../../models/mongo/trail-mongo-store";
 import { Trail } from "../../types/model-types";
 import { singleTrail, testTrails } from "../fixtures/trails";
@@ -8,7 +8,7 @@ describe("TrailMongoStore", () => {
   let created: Trail;
 
   beforeAll(async () => {
-    await connectMongo();
+    await connectMongo(`${process.env.test_db}trail-mongo-store`);
   });
 
   afterAll(async () => {

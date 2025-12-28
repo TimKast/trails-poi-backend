@@ -1,5 +1,5 @@
 import { afterAll, beforeAll, beforeEach, describe, expect, it } from "vitest";
-import { connectMongo, disconnectMongo } from "../../models/mongo/connect";
+import { connectMongo, disconnectMongo } from "../../helper/db-utils";
 import { poiMongoStore } from "../../models/mongo/poi-mongo-store";
 import { otherPoi, singlePoi, testPois } from "../../tests/fixtures/pois";
 import { Poi } from "../../types/model-types";
@@ -8,7 +8,7 @@ describe("PoiMongoStore", () => {
   let created: Poi;
 
   beforeAll(async () => {
-    await connectMongo();
+    await connectMongo(`${process.env.test_db}poi-mongo-store`);
   });
 
   afterAll(async () => {
