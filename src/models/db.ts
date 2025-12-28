@@ -1,5 +1,4 @@
 import { PoiStore, TrailStore, UserStore } from "../types/store-types";
-import { connectMongo } from "./mongo/connect";
 import { poiMongoStore } from "./mongo/poi-mongo-store";
 import { trailMongoStore } from "./mongo/trail-mongo-store";
 import { userMongoStore } from "./mongo/user-mongo-store";
@@ -16,8 +15,7 @@ export const db: Db = {
   poiStore: null,
 };
 
-export async function initDb() {
-  await connectMongo();
+export function initDb() {
   db.userStore = userMongoStore;
   db.trailStore = trailMongoStore;
   db.poiStore = poiMongoStore;

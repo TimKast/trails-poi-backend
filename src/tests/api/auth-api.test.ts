@@ -1,5 +1,6 @@
 import { Server } from "@hapi/hapi";
 import { afterAll, beforeAll, beforeEach, describe, expect, it } from "vitest";
+import { connectMongo } from "../../helper/db-utils";
 import { db } from "../../models/db";
 import { User } from "../../types/model-types";
 import { otherUser, singleUser } from "../fixtures/users";
@@ -11,6 +12,7 @@ describe("AuthApi", () => {
 
   beforeAll(async () => {
     server = await createTestServer();
+    await connectMongo(`${process.env.test_db}auth-api`);
     await initTestServerSecurity(server);
   });
   afterAll(async () => {
