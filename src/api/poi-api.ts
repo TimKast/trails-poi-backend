@@ -2,8 +2,8 @@ import Boom from "@hapi/boom";
 import { Request, ResponseToolkit } from "@hapi/hapi";
 import { validationError } from "../helper/logger";
 import { db } from "../models/db";
-import { IdSpec } from "../models/joi-schemas/common-spec";
-import { PoiArraySpec, PoiSpecPlus } from "../models/joi-schemas/poi-spec";
+import { IdSpec, ImageUriObjSpec } from "../models/joi-schemas/common-spec";
+import { PoiArraySpec, PoiPartialSpec, PoiSpec, PoiSpecPlus } from "../models/joi-schemas/poi-spec";
 import { Poi } from "../types/model-types";
 
 export const poiApi = {
@@ -58,6 +58,7 @@ export const poiApi = {
     tags: ["api"],
     description: "Create a new POI",
     notes: "Creates a new point of interest and returns the created POI",
+    validate: { payload: PoiSpec, failAction: validationError },
     response: { schema: PoiSpecPlus, failAction: validationError },
   },
 
@@ -79,7 +80,7 @@ export const poiApi = {
     tags: ["api"],
     description: "Update a POI",
     notes: "Updates an existing point of interest and returns the updated POI",
-    validate: { params: { id: IdSpec }, failAction: validationError },
+    validate: { params: { id: IdSpec }, payload: PoiPartialSpec, failAction: validationError },
     response: { schema: PoiSpecPlus, failAction: validationError },
   },
 
@@ -108,8 +109,8 @@ export const poiApi = {
     handler: async function (request: Request, h: ResponseToolkit) {
       try {
         const poiId = request.params.id as string;
-        const { imageUrl } = request.payload as { imageUrl: string };
-        const poi = await db.poiStore!.addImage(poiId, imageUrl);
+        const { imageUri } = request.payload as { imageUri: string };
+        const poi = await db.poiStore!.addImage(poiId, imageUri);
         if (poi) {
           return h.response(poi).code(200);
         }
@@ -122,7 +123,7 @@ export const poiApi = {
     tags: ["api"],
     description: "Add an image to a POI",
     notes: "Adds an image URL to the specified point of interest",
-    validate: { params: { id: IdSpec }, failAction: validationError },
+    validate: { params: { id: IdSpec }, payload: ImageUriObjSpec, failAction: validationError },
     response: { schema: PoiSpecPlus, failAction: validationError },
   },
 };

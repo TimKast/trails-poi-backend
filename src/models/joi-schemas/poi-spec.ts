@@ -1,12 +1,12 @@
 import Joi from "joi";
-import { IdSpec, PointLocationSpec } from "./common-spec";
+import { IdSpec, ImageUriArraySpec, PointLocationSpec } from "./common-spec";
 
 export const PoiSpec = Joi.object({
   name: Joi.string().example("Sunny Trail").required(),
   description: Joi.string().example("A beautiful trail with scenic views").required(),
   location: PointLocationSpec.required(),
   category: Joi.string().valid("hut", "lake", "peak").example("peak").required(),
-  images: Joi.array().items(Joi.string().uri().example("https://example.com/image.jpg")).required(),
+  images: ImageUriArraySpec.optional(),
 }).label("PoiSpec");
 
 export const PoiPartialSpec = Joi.object({
@@ -14,7 +14,7 @@ export const PoiPartialSpec = Joi.object({
   description: Joi.string().example("A beautiful trail with scenic views").optional(),
   location: PointLocationSpec.optional(),
   category: Joi.string().valid("hut", "lake", "peak").example("peak").optional(),
-  images: Joi.array().items(Joi.string().uri().example("https://example.com/image.jpg")).optional(),
+  images: ImageUriArraySpec.optional(),
 }).label("PoiPartialSpec");
 
 export const PoiSpecPlus = PoiSpec.keys({

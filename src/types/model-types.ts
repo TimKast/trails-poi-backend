@@ -11,7 +11,7 @@ export interface Trail {
   _id: string;
   name: string;
   description: string;
-  location: { lat: number; lng: number };
+  location: { lat: number; lon: number };
 }
 
 export interface Poi {
