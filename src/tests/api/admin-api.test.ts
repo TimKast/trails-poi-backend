@@ -1,11 +1,10 @@
 import { Server } from "@hapi/hapi";
 import { afterAll, afterEach, beforeAll, beforeEach, describe, expect, it } from "vitest";
 import { db } from "../../models/db";
-import { initServerSecurity } from "../../server";
 import { User } from "../../types/model-types";
 import { adminUser, singleUser, testUsers } from "../fixtures/users";
 import { nonexistingId } from "../fixtures/utils";
-import { createTestServer } from "../test-server";
+import { createTestServer, initTestServerSecurity } from "../test-server";
 
 describe("AdminApi", () => {
   let server: Server;
@@ -15,7 +14,7 @@ describe("AdminApi", () => {
 
   beforeAll(async () => {
     server = await createTestServer();
-    await initServerSecurity(server);
+    await initTestServerSecurity(server);
   });
   afterAll(async () => {
     await server.stop();

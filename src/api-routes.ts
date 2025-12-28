@@ -1,6 +1,7 @@
 import { adminApi } from "./api/admin-api";
 import { trailsApi } from "./api/trails-api";
 import { usersApi } from "./api/users-api";
+import { poiApi } from "./api/poi-api";
 
 export const apiRoutes = [
   { method: "POST" as const, path: "/api/authenticate", config: usersApi.authenticate },
@@ -18,4 +19,11 @@ export const apiRoutes = [
   { method: "PUT" as const, path: "/api/trails/{id}", config: trailsApi.update },
   { method: "DELETE" as const, path: "/api/trails/{id}", config: trailsApi.deleteOne },
   { method: "DELETE" as const, path: "/api/trails", config: trailsApi.deleteAll },
+
+  { method: "GET" as const, path: "/api/pois", config: poiApi.find },
+  { method: "GET" as const, path: "/api/pois/{id}", config: poiApi.findOne },
+  { method: "POST" as const, path: "/api/pois", config: poiApi.create },
+  { method: "PUT" as const, path: "/api/pois/{id}", config: poiApi.update },
+  { method: "POST" as const, path: "/api/pois/{id}/images", config: poiApi.addImage },
+  { method: "DELETE" as const, path: "/api/pois/{id}", config: poiApi.deleteOne },
 ];

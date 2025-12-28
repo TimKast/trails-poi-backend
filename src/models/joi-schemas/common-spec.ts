@@ -19,3 +19,8 @@ export const LocationSpec = Joi.object({
   lat: Joi.number().min(-90).max(90).example(34.011286).required(),
   lng: Joi.number().min(-180).max(180).example(-116.166868).required(),
 }).label("LocationSpec");
+
+export const PointLocationSpec = Joi.object({
+  type: Joi.string().valid("Point").example("Point").required(),
+  coordinates: Joi.array().length(2).ordered(Joi.number().min(-180).max(180).example(-116.166868), Joi.number().min(-90).max(90).example(34.011286)).required(),
+}).label("PointLocationSpec");

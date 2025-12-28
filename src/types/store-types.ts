@@ -1,4 +1,4 @@
-import type { Trail, User } from "./model-types";
+import type { Poi, Trail, User } from "./model-types";
 
 interface Store<T> {
   find(): Promise<T[]>;
@@ -16,4 +16,9 @@ export interface UserStore extends Store<User> {
 
 export interface TrailStore extends Store<Trail> {
   update(id: string, updatedTrail: Partial<Omit<Trail, "_id">>): Promise<Trail | null>;
+}
+
+export interface PoiStore extends Store<Poi> {
+  addImage(poiId: string, imageUrl: string): Promise<Poi | null>;
+  update(id: string, updatedPoi: Partial<Omit<Poi, "_id">>): Promise<Poi | null>;
 }
