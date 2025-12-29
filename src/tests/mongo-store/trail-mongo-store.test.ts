@@ -1,6 +1,6 @@
 import { afterAll, beforeAll, beforeEach, describe, expect, it } from "vitest";
 import { connectMongo, disconnectMongo } from "../../helper/db-utils";
-import { trailMongoStore } from "../../models/mongo/trail-mongo-store";
+import { trailMongoStore } from "../../models/mongo/stores/trail-mongo-store";
 import { Trail } from "../../types/model-types";
 import { otherTrail, singleTrail, testTrails } from "../fixtures/trails";
 

@@ -1,6 +1,6 @@
 import { afterAll, beforeAll, beforeEach, describe, expect, it } from "vitest";
 import { connectMongo, disconnectMongo } from "../../helper/db-utils";
-import { userMongoStore } from "../../models/mongo/user-mongo-store";
+import { userMongoStore } from "../../models/mongo/stores/user-mongo-store";
 import { User } from "../../types/model-types";
 import { otherUser, singleUser, testUsers } from "../fixtures/users";
 

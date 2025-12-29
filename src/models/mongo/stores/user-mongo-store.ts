@@ -1,6 +1,6 @@
-import type { User } from "../../types/model-types";
-import { UserStore } from "../../types/store-types";
-import { UserSchema } from "../mongo/schemas/user";
+import type { User } from "../../../types/model-types";
+import { UserStore } from "../../../types/store-types";
+import { UserSchema } from "../schemas/user";
 
 export const userMongoStore: UserStore = {
   async find(): Promise<User[]> {
