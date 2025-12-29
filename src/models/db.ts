@@ -1,17 +1,22 @@
-import { trailJsonStore } from "./json/trail-json-store";
-import { userJsonStore } from "./json/user-json-store";
+import { PoiStore, TrailStore, UserStore } from "../types/store-types";
+import { poiMongoStore } from "./mongo/poi-mongo-store";
+import { trailMongoStore } from "./mongo/trail-mongo-store";
+import { userMongoStore } from "./mongo/user-mongo-store";
 
 type Db = {
-  userStore: typeof userJsonStore | null;
-  trailStore: typeof trailJsonStore | null;
+  userStore: UserStore | null;
+  trailStore: TrailStore | null;
+  poiStore: PoiStore | null;
 };
 
 export const db: Db = {
   userStore: null,
   trailStore: null,
+  poiStore: null,
 };
 
 export function initDb() {
-  db.userStore = userJsonStore;
-  db.trailStore = trailJsonStore;
+  db.userStore = userMongoStore;
+  db.trailStore = trailMongoStore;
+  db.poiStore = poiMongoStore;
 }

@@ -1,12 +1,24 @@
-export type User = {
+export type UserRole = "admin" | "user";
+
+export interface User {
   _id: string;
   email: string;
   password: string;
-};
+  role: UserRole;
+}
 
-export type Trail = {
+export interface Trail {
   _id: string;
   name: string;
   description: string;
-  location: { lat: number; lng: number };
-};
+  location: { lat: number; lon: number };
+}
+
+export interface Poi {
+  _id: string;
+  name: string;
+  description: string;
+  location: { type: "Point"; coordinates: [number, number] };
+  category: "hut" | "lake" | "peak";
+  images: string[];
+}

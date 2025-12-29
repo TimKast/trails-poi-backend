@@ -1,16 +1,19 @@
 import { Server } from "@hapi/hapi";
 import { afterAll, beforeAll, beforeEach, describe, expect, it } from "vitest";
+import { connectMongo } from "../../helper/db-utils";
 import { db } from "../../models/db";
-import { initServerSecurity } from "../../server";
+import { User } from "../../types/model-types";
 import { otherUser, singleUser } from "../fixtures/users";
-import { createTestServer } from "../test-server";
+import { createTestServer, initTestServerSecurity } from "../test-server";
 
 describe("AuthApi", () => {
   let server: Server;
+  let user: User;
 
   beforeAll(async () => {
     server = await createTestServer();
-    await initServerSecurity(server);
+    await connectMongo(`${process.env.test_db}auth-api`);
+    await initTestServerSecurity(server);
   });
   afterAll(async () => {
     await server.stop();
@@ -18,7 +21,7 @@ describe("AuthApi", () => {
 
   beforeEach(async () => {
     await db.userStore!.deleteAll();
-    await db.userStore!.create(singleUser);
+    user = await db.userStore!.create(singleUser);
   });
 
   describe("Signup", () => {
@@ -100,7 +103,7 @@ describe("AuthApi", () => {
     });
   });
 
-  describe("Protected Route Access", () => {
+  describe("User Access", () => {
     it("should deny access to protected routes without authentication", async () => {
       const response = await server.inject({ method: "GET", url: "/api/trails" });
       expect(response.statusCode).toBe(401);
@@ -120,6 +123,31 @@ describe("AuthApi", () => {
       });
 
       expect(protectedResponse.statusCode).toBe(200);
+    });
+  });
+
+  describe("Admin Access", () => {
+    it("should deny access to admin routes for non-admin users", async () => {
+      const authResponse = await server.inject({ method: "POST", url: "/api/authenticate", payload: singleUser });
+      expect(authResponse.statusCode).toBe(201);
+
+      let cookie = authResponse.headers["set-cookie"];
+      cookie = cookie![0].split(";")[0];
+
+      const response = await server.inject({ method: "GET", url: "/api/users", headers: { cookie } });
+      expect(response.statusCode).toBe(403);
+    });
+    it("should allow access to admin routes for admin users", async () => {
+      await db.userStore!.makeAdmin(user._id);
+
+      const authResponse = await server.inject({ method: "POST", url: "/api/authenticate", payload: singleUser });
+      expect(authResponse.statusCode).toBe(201);
+
+      let cookie = authResponse.headers["set-cookie"];
+      cookie = cookie![0].split(";")[0];
+
+      const response = await server.inject({ method: "GET", url: "/api/users", headers: { cookie } });
+      expect(response.statusCode).toBe(200);
     });
   });
 });
