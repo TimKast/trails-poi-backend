@@ -13,6 +13,7 @@ export const JwtAuthSpec = Joi.object({
       "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MjRiZjU3Y2E2YjJlZTQwM2I4YjhiZTciLCJlbWFpbCI6InVzZXJAZXhhbXBsZS5jb20iLCJpYXQiOjE2ODgwODc0MDV9.XxX2XzX5xXxXxXxXxXxXxXxXxXxXxXxXxXxXxXxXxXx"
     )
     .required(),
+  email: Joi.string().email().example("user@example.com").required(),
 }).label("JwtAuthSpec");
 
 export const LocationSpec = Joi.object({

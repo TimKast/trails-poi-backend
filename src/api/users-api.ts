@@ -22,9 +22,7 @@ export const usersApi = {
         }
         const token = createToken(user);
 
-        h.state(process.env.cookie_name!, token, { isHttpOnly: true, isSecure: false, isSameSite: "Lax", path: "/api/" });
-
-        return h.response({ success: true, token: token }).code(201);
+        return h.response({ success: true, token: token, email: user.email }).code(201);
       } catch (error) {
         console.error("Error during authentication:", error);
         return Boom.serverUnavailable("Database Error");
@@ -63,7 +61,6 @@ export const usersApi = {
   logout: {
     auth: false,
     handler: function (_request: Request, h: ResponseToolkit) {
-      h.unstate(process.env.cookie_name!, { path: "/api/" });
       return h.response({ success: true }).code(200);
     },
     tags: ["api"],
