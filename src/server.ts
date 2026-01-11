@@ -15,6 +15,14 @@ const swaggerOptions = {
     title: "POI Trail API",
     version: "1.0.0",
   },
+  securityDefinitions: {
+    jwt: {
+      type: "apiKey",
+      name: "Authorization",
+      in: "header",
+    },
+  },
+  security: [{ jwt: [] }],
 };
 
 export async function initServerSecurity(server: Server) {
@@ -23,7 +31,6 @@ export async function initServerSecurity(server: Server) {
     key: process.env.jwt_secret,
     validate: validate,
     verifyOptions: { algorithms: ["HS256"] },
-    cookieKey: process.env.cookie_name,
   });
   server.auth.default("jwt");
 }
@@ -32,6 +39,7 @@ async function init() {
   const server = Hapi.server({
     port: process.env.PORT || 3000,
     host: "localhost",
+    routes: { cors: true },
   });
   server.validator(Joi);
   await initServerSecurity(server);
