@@ -57,15 +57,4 @@ export const usersApi = {
     validate: { payload: UserSpec, failAction: validationError },
     response: { schema: SuccessSpec, failAction: validationError },
   },
-
-  logout: {
-    auth: false,
-    handler: function (_request: Request, h: ResponseToolkit) {
-      return h.response({ success: true }).code(200);
-    },
-    tags: ["api"],
-    description: "Logout user",
-    notes: "Clears the authentication cookie and logs out the user",
-    response: { schema: SuccessSpec, failAction: validationError },
-  },
 };

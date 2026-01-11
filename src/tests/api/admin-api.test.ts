@@ -1,5 +1,5 @@
 import { Server } from "@hapi/hapi";
-import { afterAll, afterEach, beforeAll, beforeEach, describe, expect, it } from "vitest";
+import { afterAll, beforeAll, beforeEach, describe, expect, it } from "vitest";
 import { connectMongo } from "../../helper/db-utils";
 import { db } from "../../models/db";
 import { User } from "../../types/model-types";
@@ -11,7 +11,7 @@ describe("AdminApi", () => {
   let server: Server;
   let user: User;
   let admin: User;
-  let cookie: string[] | string | undefined;
+  let token: string;
 
   beforeAll(async () => {
     server = await createTestServer();
@@ -35,16 +35,9 @@ describe("AdminApi", () => {
       url: "/api/authenticate",
       payload: { email: admin.email, password: admin.password },
     });
-    cookie = res.headers["set-cookie"];
-    cookie = cookie![0].split(";")[0];
+    ({ token } = JSON.parse(res.payload) as { success: boolean; token: string });
   });
-  afterEach(async () => {
-    await server.inject({
-      method: "POST",
-      url: "/api/logout",
-      headers: { cookie },
-    });
-  });
+
   describe("Make Admin", () => {
     it("should make a user an admin", async () => {
       expect(user.role).toBe("user");
@@ -52,7 +45,7 @@ describe("AdminApi", () => {
       const response = await server.inject({
         method: "POST",
         url: `/api/admin/${user._id}`,
-        headers: { cookie },
+        headers: { Authorization: token },
       });
       console.log("Make admin response:", response.statusCode, response.payload);
       expect(response.statusCode).toBe(200);
@@ -66,7 +59,7 @@ describe("AdminApi", () => {
       const response = await server.inject({
         method: "POST",
         url: `/api/admin/${nonexistingId}`,
-        headers: { cookie },
+        headers: { Authorization: token },
       });
       expect(response.statusCode).toBe(404);
     });
@@ -75,7 +68,7 @@ describe("AdminApi", () => {
       const response = await server.inject({
         method: "POST",
         url: "/api/admin/invalid-id",
-        headers: { cookie },
+        headers: { Authorization: token },
       });
       expect(response.statusCode).toBe(503);
     });
@@ -86,7 +79,7 @@ describe("AdminApi", () => {
       const response = await server.inject({
         method: "GET",
         url: "/api/users",
-        headers: { cookie },
+        headers: { Authorization: token },
       });
       expect(response.statusCode).toBe(200);
 
@@ -100,7 +93,7 @@ describe("AdminApi", () => {
       const response = await server.inject({
         method: "DELETE",
         url: `/api/users/${user._id}`,
-        headers: { cookie },
+        headers: { Authorization: token },
       });
       expect(response.statusCode).toBe(200);
 
@@ -112,7 +105,7 @@ describe("AdminApi", () => {
       const response = await server.inject({
         method: "DELETE",
         url: `/api/users/${nonexistingId}`,
-        headers: { cookie },
+        headers: { Authorization: token },
       });
       expect(response.statusCode).toBe(404);
     });
@@ -121,7 +114,7 @@ describe("AdminApi", () => {
       const response = await server.inject({
         method: "DELETE",
         url: "/api/users/invalid-id",
-        headers: { cookie },
+        headers: { Authorization: token },
       });
       expect(response.statusCode).toBe(503);
     });
@@ -132,7 +125,7 @@ describe("AdminApi", () => {
       const response = await server.inject({
         method: "DELETE",
         url: "/api/users",
-        headers: { cookie },
+        headers: { Authorization: token },
       });
       expect(response.statusCode).toBe(200);
 
