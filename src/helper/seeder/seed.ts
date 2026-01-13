@@ -1,9 +1,12 @@
 import "dotenv/config";
-import { clearMongoDb, connectMongo, disconnectMongo } from "../helper/db-utils";
-import { PoiSchema } from "../models/mongo/schemas/poi";
-import { TrailSchema } from "../models/mongo/schemas/trail";
-import { UserSchema } from "../models/mongo/schemas/user";
-import { poiSeeds, trailSeeds, userSeeds } from "../models/mongo/seed-data";
+import { PoiSchema } from "../../models/mongo/schemas/poi";
+import { TrailSchema } from "../../models/mongo/schemas/trail";
+import { userMongoStore } from "../../models/mongo/stores/user-mongo-store";
+import { clearMongoDb, connectMongo, disconnectMongo } from "../db-utils";
+import { trailSeeds, userSeeds } from "./seed-data/seed-data";
+import { hutSeeds } from "./seed-data/huts";
+import { lakeSeeds } from "./seed-data/lakes";
+import { peakSeeds } from "./seed-data/peaks";
 
 async function seed() {
   try {
@@ -14,13 +17,11 @@ async function seed() {
     console.log("Datenbank geleert");
 
     for (const user of userSeeds) {
-      await UserSchema.create({
-        ...user,
-      });
+      await userMongoStore.create(user);
     }
     console.log("Users geseeded");
 
-    for (const poi of poiSeeds) {
+    for (const poi of [...hutSeeds, ...peakSeeds, ...lakeSeeds]) {
       await PoiSchema.create({
         ...poi,
         location: {
