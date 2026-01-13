@@ -39,4 +39,24 @@ export const trailMongoStore: TrailStore = {
     }
     return null;
   },
+
+  async addImages(trailId: string, imageUrls: string[]): Promise<Trail | null> {
+    const trail = await TrailSchema.findById(trailId);
+    if (trail) {
+      trail.images.push(...imageUrls);
+      const updated = await trail.save();
+      return updated.toObject();
+    }
+    return null;
+  },
+
+  async removeImage(trailId: string, imageUrl: string): Promise<Trail | null> {
+    const trail = await TrailSchema.findById(trailId);
+    if (trail) {
+      trail.images = trail.images.filter((url) => url !== imageUrl);
+      const updated = await trail.save();
+      return updated.toObject();
+    }
+    return null;
+  },
 };

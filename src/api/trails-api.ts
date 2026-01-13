@@ -2,7 +2,7 @@ import Boom from "@hapi/boom";
 import { Request, ResponseToolkit } from "@hapi/hapi";
 import { validationError } from "../helper/logger";
 import { db } from "../models/db";
-import { IdSpec, SuccessSpec } from "../models/joi-schemas/common-spec";
+import { IdSpec, ImageUriArraySpec, SuccessSpec } from "../models/joi-schemas/common-spec";
 import { TrailArraySpec, TrailPartialSpec, TrailSpec, TrailSpecPlus } from "../models/joi-schemas/trail-spec";
 import { Trail } from "../types/model-types";
 
@@ -119,5 +119,27 @@ export const trailsApi = {
     description: "Delete all trails",
     notes: "Deletes all trails from the database",
     response: { schema: SuccessSpec, failAction: validationError },
+  },
+
+  addImages: {
+    handler: async function (request: Request, h: ResponseToolkit) {
+      try {
+        const trailId = request.params.id as string;
+        const imageUrls = request.payload as string[];
+        const trail = await db.trailStore!.addImages(trailId, imageUrls);
+        if (trail) {
+          return h.response(trail).code(200);
+        }
+        return Boom.notFound("No Trail with this id");
+      } catch (error) {
+        console.error(error);
+        return Boom.serverUnavailable("Unexpected Error");
+      }
+    },
+    tags: ["api"],
+    description: "Add an image to a POI",
+    notes: "Adds an image URL to the specified point of interest",
+    validate: { params: { id: IdSpec }, payload: ImageUriArraySpec, failAction: validationError },
+    response: { schema: TrailSpecPlus, failAction: validationError },
   },
 };

@@ -18,6 +18,7 @@ export const apiRoutes = [
   { method: "PUT" as const, path: "/api/trails/{id}", config: trailsApi.update },
   { method: "DELETE" as const, path: "/api/trails/{id}", config: trailsApi.deleteOne },
   { method: "DELETE" as const, path: "/api/trails", config: trailsApi.deleteAll },
+  { method: "POST" as const, path: "/api/trails/{id}/images", config: trailsApi.addImages },
 
   { method: "GET" as const, path: "/api/pois", config: poiApi.find },
   { method: "GET" as const, path: "/api/pois/{id}", config: poiApi.findOne },
