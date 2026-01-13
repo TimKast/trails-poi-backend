@@ -33,7 +33,7 @@ describe("AdminApi", () => {
     const res = await server.inject({
       method: "POST",
       url: "/api/authenticate",
-      payload: { email: admin.email, password: admin.password },
+      payload: { email: admin.email, password: adminUser.password },
     });
     ({ token } = JSON.parse(res.payload) as { success: boolean; token: string });
   });
