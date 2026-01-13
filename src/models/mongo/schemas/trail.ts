@@ -8,6 +8,7 @@ const trailSchema = new Schema<Trail>({
     lat: Number,
     lon: Number,
   },
+  images: { type: [String], default: [] },
 });
 
 export const TrailSchema = model("Trail", trailSchema);
