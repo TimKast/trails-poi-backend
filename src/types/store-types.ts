@@ -16,6 +16,8 @@ export interface UserStore extends Store<User> {
 
 export interface TrailStore extends Store<Trail> {
   update(id: string, updatedTrail: Partial<Omit<Trail, "_id">>): Promise<Trail | null>;
+  addImages(trailId: string, imageUrls: string[]): Promise<Trail | null>;
+  removeImage(trailId: string, imageUrl: string): Promise<Trail | null>;
 }
 
 export interface PoiStore extends Store<Poi> {
