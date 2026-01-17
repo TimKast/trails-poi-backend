@@ -35,6 +35,10 @@ async function seed() {
     for (const trail of trailSeeds) {
       await TrailSchema.create({
         ...trail,
+        geometry: {
+          type: "LineString" as const,
+          coordinates: trail.geometry.coordinates,
+        },
       });
     }
     console.log("Trails geseeded");
