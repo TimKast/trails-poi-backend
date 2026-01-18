@@ -1,11 +1,11 @@
 import { Server } from "@hapi/hapi";
 import { afterAll, beforeAll, beforeEach, describe, expect, it } from "vitest";
-import { connectMongo } from "../../helper/db-utils";
-import { db } from "../../models/db";
-import { User } from "../../types/model-types";
-import { adminUser, singleUser, testUsers } from "../fixtures/users";
-import { nonexistingId } from "../fixtures/utils";
-import { createTestServer, initTestServerSecurity } from "../test-server";
+import { connectMongo } from "../../helper/db-utils.js";
+import { db } from "../../models/db.js";
+import { User } from "../../types/model-types.js";
+import { adminUser, singleUser, testUsers } from "../fixtures/users.js";
+import { nonexistingId } from "../fixtures/utils.js";
+import { createTestServer, initTestServerSecurity } from "../test-server.js";
 
 describe("AdminApi", () => {
   let server: Server;

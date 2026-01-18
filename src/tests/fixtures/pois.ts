@@ -1,4 +1,4 @@
-import { Poi } from "../../types/model-types";
+import { Poi } from "../../types/model-types.js";
 
 export const testPois: Omit<Poi, "_id">[] = [
   {

@@ -1,5 +1,5 @@
 import Joi from "joi";
-import { IdSpec } from "./common-spec";
+import { IdSpec } from "./common-spec.js";
 
 export const UserSpec = Joi.object({
   email: Joi.string().example("user@example.com").required(),

@@ -2,9 +2,9 @@ import Hapi, { Server } from "@hapi/hapi";
 import "dotenv/config";
 import * as jwt from "hapi-auth-jwt2";
 import Joi from "joi";
-import { apiRoutes } from "../api-routes";
-import { validate } from "../helper/jwt-utils";
-import { initDb } from "../models/db";
+import { apiRoutes } from "../api-routes.js";
+import { validate } from "../helper/jwt-utils.js";
+import { initDb } from "../models/db.js";
 
 export async function createTestServer() {
   const server = Hapi.server({ host: "localhost", port: 0 });

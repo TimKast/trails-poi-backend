@@ -1,7 +1,7 @@
-import { adminApi } from "./api/admin-api";
-import { poiApi } from "./api/poi-api";
-import { trailsApi } from "./api/trails-api";
-import { usersApi } from "./api/users-api";
+import { adminApi } from "./api/admin-api.js";
+import { poiApi } from "./api/poi-api.js";
+import { trailsApi } from "./api/trails-api.js";
+import { usersApi } from "./api/users-api.js";
 
 export const apiRoutes = [
   { method: "POST" as const, path: "/api/authenticate", config: usersApi.authenticate },

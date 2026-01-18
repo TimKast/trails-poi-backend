@@ -6,14 +6,14 @@
     "lib": ["es2022"],
     "module": "es2022",
     "target": "es2022",
-    "rootDir": ".",
+    "rootDir": "src",
     "outDir": "dist",
     "sourceMap": true,
     "strict": true,
     "esModuleInterop": true,
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
-    "moduleResolution": "bundler"
+    "moduleResolution": "node"
   },
-  "include": ["src", "vitest.config.ts"]
+  "include": ["src/**/*"]
 }

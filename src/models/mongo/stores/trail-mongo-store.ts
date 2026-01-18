@@ -1,6 +1,6 @@
-import type { Trail } from "../../../types/model-types";
-import { TrailStore } from "../../../types/store-types";
-import { TrailSchema } from "../schemas/trail";
+import type { Trail } from "../../../types/model-types.js";
+import { TrailStore } from "../../../types/store-types.js";
+import { TrailSchema } from "../schemas/trail.js";
 
 export const trailMongoStore: TrailStore = {
   async find(): Promise<Trail[]> {

@@ -1,8 +1,8 @@
 import { afterAll, beforeAll, beforeEach, describe, expect, it } from "vitest";
-import { connectMongo, disconnectMongo } from "../../helper/db-utils";
-import { trailMongoStore } from "../../models/mongo/stores/trail-mongo-store";
-import { Trail } from "../../types/model-types";
-import { otherTrail, singleTrail, testTrails } from "../fixtures/trails";
+import { connectMongo, disconnectMongo } from "../../helper/db-utils.js";
+import { trailMongoStore } from "../../models/mongo/stores/trail-mongo-store.js";
+import { Trail } from "../../types/model-types.js";
+import { otherTrail, singleTrail, testTrails } from "../fixtures/trails.js";
 
 describe("TrailMongoStore", () => {
   let created: Trail;

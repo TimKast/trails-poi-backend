@@ -1,5 +1,5 @@
 import { Schema, model } from "mongoose";
-import { Trail } from "../../../types/model-types";
+import { Trail } from "../../../types/model-types.js";
 
 const trailSchema = new Schema<Trail>({
   name: String,

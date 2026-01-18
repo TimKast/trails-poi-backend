@@ -5,10 +5,10 @@ import "dotenv/config";
 import * as jwt from "hapi-auth-jwt2";
 import HapiSwagger from "hapi-swagger";
 import Joi from "joi";
-import { apiRoutes } from "./api-routes";
-import { connectMongo } from "./helper/db-utils";
-import { validate } from "./helper/jwt-utils";
-import { initDb } from "./models/db";
+import { apiRoutes } from "./api-routes.js";
+import { connectMongo } from "./helper/db-utils.js";
+import { validate } from "./helper/jwt-utils.js";
+import { initDb } from "./models/db.js";
 
 const swaggerOptions = {
   info: {
