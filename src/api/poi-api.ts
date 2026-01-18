@@ -1,10 +1,10 @@
 import Boom from "@hapi/boom";
 import { Request, ResponseToolkit } from "@hapi/hapi";
-import { validationError } from "../helper/logger";
-import { db } from "../models/db";
-import { IdSpec, ImageUriObjSpec } from "../models/joi-schemas/common-spec";
-import { PoiArraySpec, PoiPartialSpec, PoiSpec, PoiSpecPlus } from "../models/joi-schemas/poi-spec";
-import { Poi } from "../types/model-types";
+import { validationError } from "../helper/logger.js";
+import { db } from "../models/db.js";
+import { IdSpec, ImageUriObjSpec } from "../models/joi-schemas/common-spec.js";
+import { PoiArraySpec, PoiPartialSpec, PoiSpec, PoiSpecPlus } from "../models/joi-schemas/poi-spec.js";
+import { Poi } from "../types/model-types.js";
 
 export const poiApi = {
   find: {

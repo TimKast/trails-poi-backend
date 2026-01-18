@@ -1,4 +1,4 @@
-import type { Poi, Trail, User } from "./model-types";
+import type { Poi, Trail, User } from "./model-types.js";
 
 interface Store<T> {
   find(): Promise<T[]>;

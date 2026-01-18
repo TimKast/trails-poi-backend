@@ -1,4 +1,4 @@
-import { User } from "../../types/model-types";
+import { User } from "../../types/model-types.js";
 
 export const testUsers: Omit<User, "_id" | "role">[] = [
   {

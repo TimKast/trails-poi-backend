@@ -1,11 +1,11 @@
 import { Server } from "@hapi/hapi";
 import { afterAll, beforeAll, beforeEach, describe, expect, it } from "vitest";
-import { connectMongo, disconnectMongo } from "../../helper/db-utils";
-import { db } from "../../models/db";
-import { Poi } from "../../types/model-types";
-import { otherPoi, singlePoi, testPois } from "../fixtures/pois";
-import { nonexistingId } from "../fixtures/utils";
-import { createTestServer } from "../test-server";
+import { connectMongo, disconnectMongo } from "../../helper/db-utils.js";
+import { db } from "../../models/db.js";
+import { Poi } from "../../types/model-types.js";
+import { otherPoi, singlePoi, testPois } from "../fixtures/pois.js";
+import { nonexistingId } from "../fixtures/utils.js";
+import { createTestServer } from "../test-server.js";
 
 describe("PoiApi", () => {
   let server: Server;

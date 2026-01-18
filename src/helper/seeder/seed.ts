@@ -1,13 +1,13 @@
 import "dotenv/config";
-import { PoiSchema } from "../../models/mongo/schemas/poi";
-import { TrailSchema } from "../../models/mongo/schemas/trail";
-import { userMongoStore } from "../../models/mongo/stores/user-mongo-store";
-import { clearMongoDb, connectMongo, disconnectMongo } from "../db-utils";
-import { hutSeeds } from "./seed-data/huts";
-import { lakeSeeds } from "./seed-data/lakes";
-import { peakSeeds } from "./seed-data/peaks";
-import { trailSeeds } from "./seed-data/trails";
-import { userSeeds } from "./seed-data/users";
+import { PoiSchema } from "../../models/mongo/schemas/poi.js";
+import { TrailSchema } from "../../models/mongo/schemas/trail.js";
+import { userMongoStore } from "../../models/mongo/stores/user-mongo-store.js";
+import { clearMongoDb, connectMongo, disconnectMongo } from "../db-utils.js";
+import { hutSeeds } from "./seed-data/huts.js";
+import { lakeSeeds } from "./seed-data/lakes.js";
+import { peakSeeds } from "./seed-data/peaks.js";
+import { trailSeeds } from "./seed-data/trails.js";
+import { userSeeds } from "./seed-data/users.js";
 
 async function seed() {
   try {

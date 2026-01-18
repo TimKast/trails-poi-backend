@@ -1,10 +1,10 @@
 import Boom from "@hapi/boom";
 import { Request, ResponseToolkit } from "@hapi/hapi";
-import { validationError } from "../helper/logger";
-import { db } from "../models/db";
-import { IdSpec, ImageUriArraySpec, SuccessSpec } from "../models/joi-schemas/common-spec";
-import { TrailArraySpec, TrailPartialSpec, TrailSpec, TrailSpecPlus } from "../models/joi-schemas/trail-spec";
-import { Trail } from "../types/model-types";
+import { validationError } from "../helper/logger.js";
+import { db } from "../models/db.js";
+import { IdSpec, ImageUriArraySpec, SuccessSpec } from "../models/joi-schemas/common-spec.js";
+import { TrailArraySpec, TrailPartialSpec, TrailSpec, TrailSpecPlus } from "../models/joi-schemas/trail-spec.js";
+import { Trail } from "../types/model-types.js";
 
 export const trailsApi = {
   find: {

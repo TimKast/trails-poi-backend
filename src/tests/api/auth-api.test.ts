@@ -1,10 +1,10 @@
 import { Server } from "@hapi/hapi";
 import { afterAll, beforeAll, beforeEach, describe, expect, it } from "vitest";
-import { connectMongo } from "../../helper/db-utils";
-import { db } from "../../models/db";
-import { User } from "../../types/model-types";
-import { otherUser, singleUser } from "../fixtures/users";
-import { createTestServer, initTestServerSecurity } from "../test-server";
+import { connectMongo } from "../../helper/db-utils.js";
+import { db } from "../../models/db.js";
+import { User } from "../../types/model-types.js";
+import { otherUser, singleUser } from "../fixtures/users.js";
+import { createTestServer, initTestServerSecurity } from "../test-server.js";
 
 describe("AuthApi", () => {
   let server: Server;

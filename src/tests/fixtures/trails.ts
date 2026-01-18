@@ -1,4 +1,4 @@
-import { Trail } from "../../types/model-types";
+import { Trail } from "../../types/model-types.js";
 
 export const testTrails: Omit<Trail, "_id">[] = [
   {

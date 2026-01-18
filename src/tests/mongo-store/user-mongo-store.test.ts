@@ -1,9 +1,9 @@
 import bcrypt from "bcryptjs";
 import { afterAll, beforeAll, beforeEach, describe, expect, it } from "vitest";
-import { connectMongo, disconnectMongo } from "../../helper/db-utils";
-import { userMongoStore } from "../../models/mongo/stores/user-mongo-store";
-import { User } from "../../types/model-types";
-import { otherUser, singleUser, testUsers } from "../fixtures/users";
+import { connectMongo, disconnectMongo } from "../../helper/db-utils.js";
+import { userMongoStore } from "../../models/mongo/stores/user-mongo-store.js";
+import { User } from "../../types/model-types.js";
+import { otherUser, singleUser, testUsers } from "../fixtures/users.js";
 
 describe("UserMongoStore", () => {
   let created: User;
