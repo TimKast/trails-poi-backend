@@ -3,10 +3,11 @@ import { PoiSchema } from "../../models/mongo/schemas/poi";
 import { TrailSchema } from "../../models/mongo/schemas/trail";
 import { userMongoStore } from "../../models/mongo/stores/user-mongo-store";
 import { clearMongoDb, connectMongo, disconnectMongo } from "../db-utils";
-import { trailSeeds, userSeeds } from "./seed-data/seed-data";
 import { hutSeeds } from "./seed-data/huts";
 import { lakeSeeds } from "./seed-data/lakes";
 import { peakSeeds } from "./seed-data/peaks";
+import { trailSeeds } from "./seed-data/trails";
+import { userSeeds } from "./seed-data/users";
 
 async function seed() {
   try {
