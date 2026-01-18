@@ -24,7 +24,7 @@ export const usersApi = {
         }
         const token = createToken(user);
 
-        return h.response({ success: true, token: token, email: user.email }).code(201);
+        return h.response({ success: true, token: token, email: user.email, role: user.role }).code(201);
       } catch (error) {
         console.error("Error during authentication:", error);
         return Boom.serverUnavailable("Database Error");

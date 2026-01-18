@@ -14,6 +14,7 @@ export const JwtAuthSpec = Joi.object({
     )
     .required(),
   email: Joi.string().email().example("user@example.com").required(),
+  role: Joi.string().valid("admin", "user").example("user").required(),
 }).label("JwtAuthSpec");
 
 export const LocationSpec = Joi.object({
@@ -39,3 +40,20 @@ export const ImageUriObjSpec = Joi.object({
   imageUri: ImageUriSpec.required(),
 }).label("ImageUriObjSpec");
 export const ImageUriArraySpec = Joi.array().items(ImageUriSpec).label("ImageUriArraySpec");
+
+const CoordsWithElevationSpec = Joi.array()
+  .length(3)
+  .ordered(
+    Joi.number().min(-180).max(180).example(-116.166868).label("Lon").required(),
+    Joi.number().min(-90).max(90).example(34.011286).label("Lat").required(),
+    Joi.number().example(1234).label("Elevation").optional()
+  )
+  .required()
+  .label("CoordsWithElevationSpec");
+
+export const CoordsWithElevationArraySpec = Joi.array().items(CoordsWithElevationSpec).label("CoordsWithElevationArraySpec");
+
+export const LineStringSpec = Joi.object({
+  type: Joi.string().valid("LineString").example("LineString").required(),
+  coordinates: CoordsWithElevationArraySpec,
+}).label("LineStringSpec");
