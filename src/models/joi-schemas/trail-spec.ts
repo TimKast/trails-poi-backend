@@ -1,16 +1,18 @@
 import Joi from "joi";
-import { IdSpec, LocationSpec } from "./common-spec";
+import { IdSpec, ImageUriArraySpec, LineStringSpec } from "./common-spec";
 
 export const TrailSpec = Joi.object({
   name: Joi.string().example("Sunny Trail").required(),
   description: Joi.string().example("A beautiful trail with scenic views").required(),
-  location: LocationSpec,
+  geometry: LineStringSpec.required(),
+  images: ImageUriArraySpec.optional(),
 }).label("TrailSpec");
 
 export const TrailPartialSpec = Joi.object({
   name: Joi.string().example("Sunny Trail").optional(),
   description: Joi.string().example("A beautiful trail with scenic views").optional(),
-  location: LocationSpec.optional(),
+  geometry: LineStringSpec.optional(),
+  images: ImageUriArraySpec.optional(),
 }).label("TrailPartialSpec");
 
 export const TrailSpecPlus = TrailSpec.keys({

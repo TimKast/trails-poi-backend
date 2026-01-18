@@ -11,6 +11,7 @@ const poiSchema = new Schema<Poi>({
   category: {
     type: String,
     enum: ["hut", "lake", "peak"],
+    required: true,
   },
   images: { type: [String], default: [] },
 });

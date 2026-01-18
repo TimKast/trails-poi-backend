@@ -1,6 +1,7 @@
-import type { User } from "../../types/model-types";
-import { UserStore } from "../../types/store-types";
-import { UserSchema } from "../mongo/schemas/user";
+import bcrypt from "bcryptjs";
+import type { User } from "../../../types/model-types";
+import { UserStore } from "../../../types/store-types";
+import { UserSchema } from "../schemas/user";
 
 export const userMongoStore: UserStore = {
   async find(): Promise<User[]> {
@@ -14,7 +15,8 @@ export const userMongoStore: UserStore = {
   },
 
   async create(user: Omit<User, "_id" | "role">): Promise<User> {
-    const newUser = new UserSchema(user);
+    const hashedPassword = await bcrypt.hash(user.password, 10);
+    const newUser = new UserSchema({ ...user, password: hashedPassword });
     const userObj = await newUser.save();
     return userObj.toObject();
   },

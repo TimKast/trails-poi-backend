@@ -1,6 +1,6 @@
-import type { Poi } from "../../types/model-types";
-import { PoiStore } from "../../types/store-types";
-import { PoiSchema } from "../mongo/schemas/poi";
+import type { Poi } from "../../../types/model-types";
+import { PoiStore } from "../../../types/store-types";
+import { PoiSchema } from "../schemas/poi";
 
 export const poiMongoStore: PoiStore = {
   async find(): Promise<Poi[]> {

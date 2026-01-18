@@ -1,6 +1,7 @@
+import bcrypt from "bcryptjs";
 import { afterAll, beforeAll, beforeEach, describe, expect, it } from "vitest";
 import { connectMongo, disconnectMongo } from "../../helper/db-utils";
-import { userMongoStore } from "../../models/mongo/user-mongo-store";
+import { userMongoStore } from "../../models/mongo/stores/user-mongo-store";
 import { User } from "../../types/model-types";
 import { otherUser, singleUser, testUsers } from "../fixtures/users";
 
@@ -26,10 +27,11 @@ describe("UserMongoStore", () => {
   describe("create", () => {
     it("creates a user with generated _id", async () => {
       const user = await userMongoStore.create(otherUser);
+      const passwordMatch = await bcrypt.compare(otherUser.password, user.password);
 
       expect(user._id).toBeDefined();
       expect(user.email).toBe(otherUser.email);
-      expect(user.password).toBe(otherUser.password);
+      expect(passwordMatch).toBe(true);
       expect(user.role).toBe("user");
     });
   });

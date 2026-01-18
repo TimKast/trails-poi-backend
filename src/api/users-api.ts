@@ -1,5 +1,6 @@
 import Boom from "@hapi/boom";
 import { Request, ResponseToolkit } from "@hapi/hapi";
+import bcrypt from "bcryptjs";
 import { createToken } from "../helper/jwt-utils";
 import { validationError } from "../helper/logger";
 import { db } from "../models/db";
@@ -17,14 +18,13 @@ export const usersApi = {
         if (!user) {
           return Boom.unauthorized("User not found");
         }
-        if (user.password !== password) {
+        const passwordMatch = await bcrypt.compare(password, user.password);
+        if (!passwordMatch) {
           return Boom.unauthorized("Invalid password");
         }
         const token = createToken(user);
 
-        h.state(process.env.cookie_name!, token, { isHttpOnly: true, isSecure: false, isSameSite: "Lax", path: "/api/" });
-
-        return h.response({ success: true, token: token }).code(201);
+        return h.response({ success: true, token: token, email: user.email, role: user.role }).code(201);
       } catch (error) {
         console.error("Error during authentication:", error);
         return Boom.serverUnavailable("Database Error");
@@ -57,18 +57,6 @@ export const usersApi = {
     description: "Register a new user",
     notes: "Creates a new user account with email and password",
     validate: { payload: UserSpec, failAction: validationError },
-    response: { schema: SuccessSpec, failAction: validationError },
-  },
-
-  logout: {
-    auth: false,
-    handler: function (_request: Request, h: ResponseToolkit) {
-      h.unstate(process.env.cookie_name!, { path: "/api/" });
-      return h.response({ success: true }).code(200);
-    },
-    tags: ["api"],
-    description: "Logout user",
-    notes: "Clears the authentication cookie and logs out the user",
     response: { schema: SuccessSpec, failAction: validationError },
   },
 };

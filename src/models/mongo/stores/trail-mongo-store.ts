@@ -1,6 +1,6 @@
-import type { Trail } from "../../types/model-types";
-import { TrailStore } from "../../types/store-types";
-import { TrailSchema } from "../mongo/schemas/trail";
+import type { Trail } from "../../../types/model-types";
+import { TrailStore } from "../../../types/store-types";
+import { TrailSchema } from "../schemas/trail";
 
 export const trailMongoStore: TrailStore = {
   async find(): Promise<Trail[]> {
@@ -34,6 +34,26 @@ export const trailMongoStore: TrailStore = {
     const trail = await TrailSchema.findById(id);
     if (trail) {
       Object.assign(trail, updatedTrail);
+      const updated = await trail.save();
+      return updated.toObject();
+    }
+    return null;
+  },
+
+  async addImages(trailId: string, imageUrls: string[]): Promise<Trail | null> {
+    const trail = await TrailSchema.findById(trailId);
+    if (trail) {
+      trail.images.push(...imageUrls);
+      const updated = await trail.save();
+      return updated.toObject();
+    }
+    return null;
+  },
+
+  async removeImage(trailId: string, imageUrl: string): Promise<Trail | null> {
+    const trail = await TrailSchema.findById(trailId);
+    if (trail) {
+      trail.images = trail.images.filter((url) => url !== imageUrl);
       const updated = await trail.save();
       return updated.toObject();
     }

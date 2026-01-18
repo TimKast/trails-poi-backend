@@ -4,10 +4,11 @@ import { Trail } from "../../../types/model-types";
 const trailSchema = new Schema<Trail>({
   name: String,
   description: String,
-  location: {
-    lat: Number,
-    lon: Number,
+  geometry: {
+    type: { type: String, enum: ["LineString"], required: true },
+    coordinates: { type: [[Number]], required: true }, // lon, lat, optional: Elevation
   },
+  images: { type: [String], default: [] },
 });
 
 export const TrailSchema = model("Trail", trailSchema);

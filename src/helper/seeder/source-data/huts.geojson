@@ -1,0 +1,1088 @@
+{
+  "type": "FeatureCollection",
+  "generator": "overpass-turbo",
+  "copyright": "The data included in this document is from www.openstreetmap.org. The data is made available under ODbL.",
+  "timestamp": "2026-01-13T10:12:30Z",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/254546886",
+        "addr:city": "Berchtesgaden",
+        "addr:country": "DE",
+        "addr:housenumber": "1",
+        "addr:postcode": "83471",
+        "addr:street": "Purtschellerstraße",
+        "amenity": "restaurant",
+        "ele": "1692",
+        "name": "Purtschellerhaus",
+        "note:de": "FIXME: Rauchverbot prüfen",
+        "operator": "DAV Sektion Sonneberg",
+        "operator:tenant": "Sepp König",
+        "phone": "+4986522420",
+        "ref:avf": "121",
+        "smoking": "no",
+        "tourism": "alpine_hut",
+        "website": "https://www.purtschellerhaus.de/",
+        "wikidata": "Q1790593"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          13.0716402,
+          47.6095206
+        ]
+      },
+      "id": "node/254546886"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/278226693",
+        "cuisine": "regional",
+        "ele": "1638",
+        "name": "Kärlinger Haus",
+        "operator": "DAV Sektion Berchtesgaden",
+        "phone": "+4986526019901",
+        "ref:avf": "141",
+        "ref:gusid": "de.09172132.kaerlingerhaus",
+        "ref_name": "Kärlinger Haus, Schönau",
+        "shower": "yes",
+        "smoking": "no",
+        "tourism": "alpine_hut",
+        "url:official": "http://www.kaerlingerhaus.de/",
+        "website": "https://www.dav-berchtesgaden.de/Huetten/GrosseHuetten/Kaerlingerhaus",
+        "wikidata": "Q1479018",
+        "wikipedia": "de:Kärlingerhaus"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          12.9371264,
+          47.495471
+        ]
+      },
+      "id": "node/278226693"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/292047294",
+        "amenity": "restaurant",
+        "cuisine": "regional",
+        "ele": "1513",
+        "name": "Berghaus Schwaben",
+        "note:opening_hours": "ganzjährig",
+        "opening_hours": "May-Nov: Th-Tu 10:00-16:30",
+        "phone": "+49 832 438",
+        "tourism": "alpine_hut",
+        "website": "https://www.berghaus-schwaben.de/",
+        "wikimedia_commons": "File:BerghausSchwaben.jpg"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          10.1846714,
+          47.4610918
+        ]
+      },
+      "id": "node/292047294"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/293246279",
+        "addr:city": "Mittenwald",
+        "addr:country": "DE",
+        "addr:housenumber": "14",
+        "addr:postcode": "82481",
+        "addr:street": "Klausnerweg",
+        "amenity": "restaurant",
+        "beds": "10",
+        "diet:vegetarian": "only",
+        "drinking_water": "no",
+        "ele": "1650",
+        "indoor_seating": "yes",
+        "name": "Dammkarhütte",
+        "note": "Übernachtung nach Voranmeldung; Postanschrift: Klausnerweg 14, 82481 Mittenwald",
+        "operator:tenant": "Andrea Reindl",
+        "outdoor_seating": "yes",
+        "phone": "+4988233826",
+        "phone2": "+491733514659",
+        "shower": "no",
+        "tourism": "alpine_hut",
+        "website": "http://www.dammkarhuette.de/",
+        "wheelchair": "no",
+        "wikidata": "Q98540937"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          11.3088936,
+          47.4373796
+        ]
+      },
+      "id": "node/293246279"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/296163774",
+        "addr:city": "Mittenwald",
+        "addr:country": "DE",
+        "addr:postcode": "82481",
+        "amenity": "restaurant",
+        "contact:email": "brunnstein@t-online.de",
+        "contact:mobile": "+49 172 8909613",
+        "contact:website": "http://www.brunnsteinhuette.de/",
+        "ele": "1560",
+        "name": "Brunnsteinhütte",
+        "operator": "DAV Sektion Mittenwald",
+        "operator:tenant": "Hans-Peter Gallenberger",
+        "smoking": "no",
+        "tourism": "alpine_hut",
+        "wikidata": "Q992924"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          11.2785584,
+          47.4137026
+        ]
+      },
+      "id": "node/296163774"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/306392070",
+        "name": "Bergwachthütte",
+        "opening_hours": "Su 12:00-18:00",
+        "outdoor_seating": "yes",
+        "tourism": "alpine_hut"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          11.4151463,
+          49.772183
+        ]
+      },
+      "id": "node/306392070"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/317727272",
+        "beds": "58",
+        "designation": "Am kleinen Arber",
+        "ele": "1289",
+        "name": "Chamer Hütte",
+        "tourism": "alpine_hut",
+        "website": "https://www.sc-bodenmais.de/chamer-huette/"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          13.1148908,
+          49.1133824
+        ]
+      },
+      "id": "node/317727272"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/322058651",
+        "amenity": "restaurant",
+        "cuisine": "regional",
+        "name": "Kreuzhaus",
+        "tourism": "alpine_hut"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          12.7540521,
+          49.0467619
+        ]
+      },
+      "id": "node/322058651"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/340560279",
+        "addr:city": "Mittenwald",
+        "addr:country": "DE",
+        "addr:postcode": "82481",
+        "amenity": "restaurant",
+        "check_date:opening_hours": "2023-07-15",
+        "contact:mobile": "+49 1511 7303118",
+        "contact:website": "https://www.mittenwalderhuette.de",
+        "ele": "1518",
+        "image": "https://w.wiki/BAZ8",
+        "name": "Mittenwalder Hütte",
+        "opening_hours:signed": "no",
+        "operator": "DAV Sektion Mittenwald",
+        "shower": "no",
+        "smoking": "no",
+        "tenant": "Kimberly & Tobias",
+        "tourism": "alpine_hut",
+        "wikidata": "Q1552478",
+        "wikimedia_commons": "Category:Mittenwalder Hütte"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          11.2823729,
+          47.4338329
+        ]
+      },
+      "id": "node/340560279"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/357482706",
+        "amenity": "restaurant",
+        "ele": "1045",
+        "name": "Höllentaleingangshütte",
+        "operator": "DAV Sektion Garmisch-Partenkirchen",
+        "operator:tenant": "Florian Jäger",
+        "phone": "+4988218895",
+        "smoking": "no",
+        "tourism": "alpine_hut",
+        "website": "http://www.hoellentalklamm.de/"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          11.0444884,
+          47.4483891
+        ]
+      },
+      "id": "node/357482706"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/476498599",
+        "addr:city": "Garmisch-Partenkirchen",
+        "addr:country": "DE",
+        "addr:housenumber": "1",
+        "addr:postcode": "82467",
+        "addr:street": "Zugspitzplatt",
+        "amenity": "restaurant",
+        "cuisine": "regional",
+        "ele": "2052",
+        "indoor_seating": "yes",
+        "name": "Knorrhütte",
+        "operator": "DAV Sektion München",
+        "operator:tenant": "Jörg Pfeifer",
+        "outdoor_seating": "yes",
+        "phone": "+4988212905",
+        "shower": "no",
+        "source": "survey",
+        "tourism": "alpine_hut",
+        "url:official": "http://www.knorrhuette.de/",
+        "website": "http://www.knorrhuette.de/",
+        "website:booking": "https://www.alpsonline.org/reservation/calendar?hut_id=149",
+        "wikidata": "Q1777433",
+        "wikipedia": "de:Knorrhütte"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          11.012732,
+          47.4100105
+        ]
+      },
+      "id": "node/476498599"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/484881698",
+        "ele": "1213",
+        "fax": "+49 8386 8140",
+        "name": "Imberghaus",
+        "phone": "+49 8386 8106",
+        "restaurant": "tradition",
+        "tourism": "alpine_hut",
+        "website": "https://www.imberghaus.de/"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          10.0190653,
+          47.5103725
+        ]
+      },
+      "id": "node/484881698"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/503714435",
+        "description": "Wanderhütte",
+        "tourism": "alpine_hut"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.4430719,
+          50.0660653
+        ]
+      },
+      "id": "node/503714435"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/528928716",
+        "addr:city": "Kochel am See",
+        "addr:country": "DE",
+        "addr:postcode": "82432",
+        "addr:street": "Reitweg",
+        "amenity": "restaurant",
+        "brewery": "Tegernseer",
+        "contact:city": "Kochel am See",
+        "contact:country": "DE",
+        "contact:housenumber": "14a",
+        "contact:phone": "+49 8851 234",
+        "contact:postcode": "82431",
+        "contact:street": "Rothenberg Nord",
+        "contact:website": "https://www.berggasthaus-herzogstand.de",
+        "ele": "1575",
+        "indoor_seating": "yes",
+        "name": "Berggasthaus Herzogstand",
+        "nohousenumber": "yes",
+        "operator": "Siegfried Zauner GmbH",
+        "outdoor_seating": "yes",
+        "smoking": "outside",
+        "toilets:wheelchair": "no",
+        "tourism": "alpine_hut",
+        "wheelchair": "limited"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          11.3109351,
+          47.6079348
+        ]
+      },
+      "id": "node/528928716"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/528983385",
+        "amenity": "restaurant",
+        "capacity": "36",
+        "ele": "1602",
+        "name": "Brunnenkopfhütte",
+        "operator": "DAV Sektion Bergland",
+        "operator:tenant": "Luis Baudrexl",
+        "phone": "+49 175 6540155",
+        "smoking": "no",
+        "tourism": "alpine_hut",
+        "website": "https://brunnenkopfhuette.com",
+        "website:booking": "https://www.alpsonline.org/reservation/calendar?hut_id=286",
+        "wikidata": "Q992808"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          10.9271776,
+          47.5818786
+        ]
+      },
+      "id": "node/528983385"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/528992044",
+        "addr:city": "Schwangau",
+        "addr:housenumber": "1",
+        "addr:postcode": "87645",
+        "addr:street": "Tegelberg",
+        "amenity": "restaurant",
+        "brewery": "König Ludwig",
+        "ele": "1707",
+        "name": "Tegelberghaus",
+        "operator": "DAV",
+        "operator:tenant": "Hynek Bednar",
+        "phone": "+49 8362 8980",
+        "smoking": "no",
+        "tourism": "alpine_hut",
+        "website": "http://www.tegelberghaus.de/"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          10.7780688,
+          47.5593927
+        ]
+      },
+      "id": "node/528992044"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/534912502",
+        "addr:street": "Kohlau",
+        "designation": "Skihütte",
+        "name": "Skihütte-Kohlau",
+        "tourism": "alpine_hut"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          13.2584659,
+          48.9459849
+        ]
+      },
+      "id": "node/534912502"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/563834740",
+        "addr:city": "Weidenberg",
+        "addr:country": "DE",
+        "addr:housenumber": "13",
+        "addr:postcode": "95466",
+        "addr:street": "Rügersberg",
+        "contact:website": "https://koenigsheide.de",
+        "ele": "650",
+        "internet_access": "wlan",
+        "internet_access:fee": "customers",
+        "name": "Naturfreundehaus \"An der Königsheide\"",
+        "operator": "NaturFreunde Deutschland",
+        "ref": "N 093",
+        "source": "Datenspende der NaturFreunde Deutschland",
+        "tourism": "alpine_hut"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          11.74397,
+          49.957859
+        ]
+      },
+      "id": "node/563834740"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/833885363",
+        "alt_name": "Reith-Alpe",
+        "amenity": "restaurant",
+        "cuisine": "regional",
+        "email": "griasdi@reithalpe-schwangau.de",
+        "name": "Alpe Reith",
+        "opening_hours": "Mo-Su 12:00-22:00",
+        "outdoor_seating": "yes",
+        "phone": "+49 15739353542",
+        "tourism": "alpine_hut",
+        "website": "https://www.reithalpe-schwangau.de/"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          10.7578982,
+          47.5661826
+        ]
+      },
+      "id": "node/833885363"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1282788507",
+        "name": "Frankenwaldverein Schauenstein",
+        "tourism": "alpine_hut"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          11.7534714,
+          50.2841567
+        ]
+      },
+      "id": "node/1282788507"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1366410499",
+        "amenity": "restaurant",
+        "biergarten": "yes",
+        "cuisine": "regional",
+        "name": "Forsthaus Sylvan",
+        "opening_hours": "We-Su 11:00-18:00",
+        "phone": "+49 9394 585",
+        "phone:mobile": "+49 171 3336594",
+        "tourism": "alpine_hut",
+        "website": "https://forsthaus-sylvan.de"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.4796212,
+          49.9023475
+        ]
+      },
+      "id": "node/1366410499"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1621410739",
+        "amenity": "restaurant",
+        "beds": "41",
+        "ele": "1630",
+        "name": "Hochlandhütte",
+        "operator": "DAV Sektion Hochland",
+        "operator:tenant": "Stefan und Birgit Müller",
+        "phone": "+49 174 9897863",
+        "shower": "no",
+        "smoking": "no",
+        "tourism": "alpine_hut",
+        "website": "https://www.hochlandhuette.de/",
+        "wikidata": "Q1620056"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          11.3187322,
+          47.4497413
+        ]
+      },
+      "id": "node/1621410739"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1699285837",
+        "name": "Wagenthalhütte",
+        "operator": "Deutscher Alpenverein Bayreuth",
+        "tourism": "alpine_hut"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          11.7971567,
+          49.994037
+        ]
+      },
+      "id": "node/1699285837"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/2329470851",
+        "name": "Wanderhütte",
+        "tourism": "alpine_hut"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.7541268,
+          49.9433806
+        ]
+      },
+      "id": "node/2329470851"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/2402628696",
+        "internet_access": "no",
+        "name": "Burgsteinhütte",
+        "operator": "nicht geöffnet",
+        "tourism": "alpine_hut"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          11.9970931,
+          50.0010551
+        ]
+      },
+      "id": "node/2402628696"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/2499492744",
+        "description": "Hütte des Rhönklubs Würzburg",
+        "name": "Würzburger Haus",
+        "operator": "Rbobert Voll",
+        "tourism": "alpine_hut"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.9049838,
+          50.3125934
+        ]
+      },
+      "id": "node/2499492744"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/3785851604",
+        "access": "private",
+        "name": "Hütte Anzenberg",
+        "operator": "Fichtelgebirgsverein",
+        "start_date": "1927",
+        "tourism": "alpine_hut"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          11.9207417,
+          49.8717712
+        ]
+      },
+      "id": "node/3785851604"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/5340076821",
+        "addr:city": "Kreuth",
+        "addr:country": "DE",
+        "addr:housenumber": "20",
+        "addr:postcode": "83708",
+        "addr:street": "Berghaus",
+        "ele": "1650",
+        "name": "Tegernseer Hütte",
+        "smoking": "outside",
+        "start_date": "1903",
+        "tourism": "alpine_hut",
+        "wikidata": "Q2400327"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          11.6783446,
+          47.632728
+        ]
+      },
+      "id": "node/5340076821"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/5340084297",
+        "check_date": "2024-07-06",
+        "name": "Buchsteinhütte",
+        "tourism": "alpine_hut",
+        "wheelchair": "no",
+        "wikidata": "Q58582195"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          11.6795654,
+          47.6398127
+        ]
+      },
+      "id": "node/5340084297"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/5358691298",
+        "amenity": "restaurant",
+        "name": "Alpe Hohenegg",
+        "tourism": "alpine_hut"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          10.009897,
+          47.5153561
+        ]
+      },
+      "id": "node/5358691298"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/5433058162",
+        "contact:email": "info@buronhuette.de",
+        "contact:phone": "+49 8365 290",
+        "ele": "1250",
+        "name": "Buronhütte",
+        "opening_hours": "Tu off",
+        "operator": "Bellazzo OHG",
+        "outdoor_seating": "yes",
+        "rooms": "12",
+        "smoking": "no",
+        "source": "Tourist-Info Wertach",
+        "source:date": "2021-04-12",
+        "tourism": "alpine_hut",
+        "website": "https://www.buronhuette.de/"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          10.4598934,
+          47.6009529
+        ]
+      },
+      "id": "node/5433058162"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/5467207892",
+        "capacity": "44",
+        "cuisine": "regional",
+        "ele": "1535",
+        "name": "Grüntenhaus",
+        "operator": "Familie Egenrieder",
+        "tourism": "alpine_hut",
+        "website": "https://www.gruentenhaus.de/",
+        "wikidata": "Q1552376",
+        "wikimedia_commons": "Category:Grüntenhaus",
+        "wikipedia": "de:Grüntenhaus"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          10.3127968,
+          47.5511719
+        ]
+      },
+      "id": "node/5467207892"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/5477907740",
+        "amenity": "restaurant",
+        "capacity": "39",
+        "contact:mobile": "+491714202526",
+        "cuisine": "bavarian",
+        "currency:XBT": "yes",
+        "ele": "1202",
+        "email": "info@neumayr-huette.de",
+        "name": "Neumayr-Hütte",
+        "operator": "Jana Bäro und Carina Bayrhof",
+        "payment:lightning": "yes",
+        "payment:onchain": "yes",
+        "phone": "+49 178 6904959",
+        "survey:date": "2023-04-17",
+        "tourism": "alpine_hut",
+        "website": "https://www.neumayr-huette.de/"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          10.3397577,
+          47.5769249
+        ]
+      },
+      "id": "node/5477907740"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/5478031048",
+        "capacity": "15",
+        "contact:mobile": "+49 163 666 6570",
+        "ele": "1010",
+        "name": "Bergwaldhaus Dreiangelhütte",
+        "opening_hours:restaurant": "Mo, Tu off",
+        "operator": "Fam. Esterl",
+        "tourism": "alpine_hut",
+        "website": "https://dreiangelhuette.de/"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          10.3528613,
+          47.5503806
+        ]
+      },
+      "id": "node/5478031048"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/5479484660",
+        "amenity": "restaurant",
+        "cuisine": "regional;brotzeit",
+        "ele": "1495",
+        "internet_access": "no",
+        "name": "Dinserhütte",
+        "opening_hours": "Jun-Sep: Sa 10:00-20:00; Jun-Sep: Su 10:00-17:30; Jun-Sep PH 10:00-17:30; Mo-Fr off",
+        "operator": "Fam. Nöß",
+        "phone": "+49 8363 6352",
+        "tourism": "alpine_hut"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          10.4922431,
+          47.5892906
+        ]
+      },
+      "id": "node/5479484660"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/6796862386",
+        "name": "Weißenburger Hütte",
+        "tourism": "alpine_hut",
+        "website": "https://dav-weissenburg.de/"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          11.8901548,
+          47.6484684
+        ]
+      },
+      "id": "node/6796862386"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/8593083517",
+        "tourism": "alpine_hut"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          13.3053238,
+          48.7483266
+        ]
+      },
+      "id": "node/8593083517"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/8913413778",
+        "fee": "no",
+        "internet_access": "no",
+        "tourism": "alpine_hut"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          10.1252752,
+          50.1344084
+        ]
+      },
+      "id": "node/8913413778"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/9405232318",
+        "beds": "24",
+        "ele": "1123",
+        "name": "Bergheim Maria Trost",
+        "operator": "Bischöfliches Jugendamt Augsburg",
+        "rooms": "6",
+        "smoking": "no",
+        "tourism": "alpine_hut",
+        "url": "http://www.gruppenhaus.de/bergheim-maria-trost-nesselwang-hs3754.html"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          10.5111991,
+          47.6081115
+        ]
+      },
+      "id": "node/9405232318"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/9474000958",
+        "email": "info@untere-ochsenalpe.de",
+        "internet_access": "wlan",
+        "name": "Untere Ochsenalpe",
+        "phone": "+49 8324 7623",
+        "tourism": "alpine_hut",
+        "website": "https://www.untere-ochsenalpe.de/",
+        "wheelchair": "no"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          10.4011773,
+          47.5093563
+        ]
+      },
+      "id": "node/9474000958"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/9565575461",
+        "addr:city": "Nesselwang",
+        "addr:housenumber": "50",
+        "addr:postcode": "87484",
+        "addr:street": "Alpspitzweg",
+        "ele": "1480",
+        "name": "Sportheim Böck",
+        "outdoor_seating": "yes",
+        "phone": "+49 8362 3111",
+        "tourism": "alpine_hut",
+        "website": "https://www.sportheim-boeck.de/"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          10.5041191,
+          47.5983327
+        ]
+      },
+      "id": "node/9565575461"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/9565650270",
+        "amenity": "restaurant",
+        "cuisine": "regional",
+        "name": "Kronenhütte",
+        "outdoor_seating": "yes",
+        "phone": "+4983613170",
+        "source": "bing",
+        "tourism": "alpine_hut",
+        "website": "https://www.kronenhuette.de/"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          10.4998364,
+          47.6092142
+        ]
+      },
+      "id": "node/9565650270"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/9797999351",
+        "addr:city": "Bischofsmais",
+        "addr:housenumber": "1",
+        "addr:place": "Oberbreitenau",
+        "addr:postcode": "94253",
+        "contact:email": "landshuter.haus@gmail.com",
+        "contact:website": "https://www.landshuterhaus.eu/",
+        "description": "aktuell bis voraussichtlich Herbst 2024 wegen Renovierung geschlossen",
+        "disused": "yes",
+        "electricity": "yes",
+        "fee": "yes",
+        "name": "Landshuter Haus",
+        "tourism": "alpine_hut"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          13.0345833,
+          48.9157474
+        ]
+      },
+      "id": "node/9797999351"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/9991613217",
+        "addr:housenumber": "1",
+        "addr:postcode": "93462",
+        "addr:street": "Osser",
+        "name": "Osserschutzhaus",
+        "tourism": "alpine_hut",
+        "website": "https://www.osser-schutzhaus.de/"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          13.109739,
+          49.2034214
+        ]
+      },
+      "id": "node/9991613217"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/11251657995",
+        "tourism": "alpine_hut",
+        "wheelchair": "no"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          10.414738,
+          49.6332559
+        ]
+      },
+      "id": "node/11251657995"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/12271092802",
+        "name": "Otto Eisenkolb Hütte",
+        "tourism": "alpine_hut"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          10.1772135,
+          47.4793232
+        ]
+      },
+      "id": "node/12271092802"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/13131702124",
+        "name": "Kührointalm",
+        "tourism": "alpine_hut"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          12.9612323,
+          47.5708459
+        ]
+      },
+      "id": "node/13131702124"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/13308376101",
+        "name": "Schutz- und Rasthütte Hahnenkamm",
+        "tourism": "alpine_hut"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.0991243,
+          50.0808664
+        ]
+      },
+      "id": "node/13308376101"
+    }
+  ]
+}

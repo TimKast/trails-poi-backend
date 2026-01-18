@@ -1,6 +1,6 @@
 import { afterAll, beforeAll, beforeEach, describe, expect, it } from "vitest";
 import { connectMongo, disconnectMongo } from "../../helper/db-utils";
-import { poiMongoStore } from "../../models/mongo/poi-mongo-store";
+import { poiMongoStore } from "../../models/mongo/stores/poi-mongo-store";
 import { otherPoi, singlePoi, testPois } from "../../tests/fixtures/pois";
 import { Poi } from "../../types/model-types";
 

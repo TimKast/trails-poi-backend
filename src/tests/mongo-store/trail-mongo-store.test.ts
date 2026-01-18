@@ -1,6 +1,6 @@
 import { afterAll, beforeAll, beforeEach, describe, expect, it } from "vitest";
 import { connectMongo, disconnectMongo } from "../../helper/db-utils";
-import { trailMongoStore } from "../../models/mongo/trail-mongo-store";
+import { trailMongoStore } from "../../models/mongo/stores/trail-mongo-store";
 import { Trail } from "../../types/model-types";
 import { otherTrail, singleTrail, testTrails } from "../fixtures/trails";
 
@@ -93,6 +93,41 @@ describe("TrailMongoStore", () => {
 
       const trails = await trailMongoStore.find();
       expect(trails).toHaveLength(0);
+    });
+  });
+
+  describe("addImages", () => {
+    it("adds images to a trail", async () => {
+      const imageUrls = ["http://example.com/image1.jpg", "http://example.com/image2.jpg"];
+      const updated = await trailMongoStore.addImages(created._id, imageUrls);
+
+      expect(updated).toBeDefined();
+      expect(updated?.images).toEqual(imageUrls);
+    });
+
+    it("returns null when adding images to non-existing trail", async () => {
+      const imageUrls = ["http://example.com/image1.jpg"];
+      const updated = await trailMongoStore.addImages("507f1f77bcf86cd799439011", imageUrls);
+
+      expect(updated).toBeNull();
+    });
+  });
+
+  describe("removeImage", () => {
+    it("removes an image from a trail", async () => {
+      const imageUrls = ["http://example.com/image1.jpg", "http://example.com/image2.jpg"];
+      await trailMongoStore.addImages(created._id, imageUrls);
+
+      const updated = await trailMongoStore.removeImage(created._id, "http://example.com/image1.jpg");
+
+      expect(updated).toBeDefined();
+      expect(updated?.images).toEqual(["http://example.com/image2.jpg"]);
+    });
+
+    it("returns null when removing image from non-existing trail", async () => {
+      const updated = await trailMongoStore.removeImage("507f1f77bcf86cd799439011", "http://example.com/image1.jpg");
+
+      expect(updated).toBeNull();
     });
   });
 });

@@ -142,4 +142,41 @@ describe("TrailApi", () => {
       expect(remaining).toHaveLength(0);
     });
   });
+
+  describe("POST /api/trails/{id}/images - addImages", () => {
+    it("adds images to a trail", async () => {
+      const imageUrls = ["http://example.com/image1.jpg", "http://example.com/image2.jpg"];
+      const response = await server.inject({
+        method: "POST",
+        url: `/api/trails/${created._id}/images`,
+        payload: imageUrls,
+      });
+
+      expect(response.statusCode).toBe(200);
+      const body = JSON.parse(response.payload) as Trail;
+      expect(body.images).toEqual(imageUrls);
+    });
+
+    it("returns 404 when adding images to non-existent trail", async () => {
+      const imageUrls = ["http://example.com/image1.jpg", "http://example.com/image2.jpg"];
+      const response = await server.inject({
+        method: "POST",
+        url: `/api/trails/${nonexistingId}/images`,
+        payload: imageUrls,
+      });
+
+      expect(response.statusCode).toBe(404);
+    });
+
+    it("returns 503 for invalid id", async () => {
+      const imageUrls = ["http://example.com/image1.jpg", "http://example.com/image2.jpg"];
+      const response = await server.inject({
+        method: "POST",
+        url: "/api/trails/invalid-id/images",
+        payload: imageUrls,
+      });
+
+      expect(response.statusCode).toBe(503);
+    });
+  });
 });

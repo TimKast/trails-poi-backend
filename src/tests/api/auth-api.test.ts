@@ -53,12 +53,12 @@ describe("AuthApi", () => {
   });
 
   describe("Authentication", () => {
-    it("should set a cookie upon successful authentication", async () => {
+    it("should return a token upon successful authentication", async () => {
       const response = await server.inject({ method: "POST", url: "/api/authenticate", payload: singleUser });
       expect(response.statusCode).toBe(201);
-      const cookie = response.headers["set-cookie"];
-      expect(cookie).toBeDefined();
-      expect(cookie![0]).toContain(`${process.env.cookie_name}=`);
+      console.log(response);
+      const { token } = JSON.parse(response.payload) as { success: boolean; token: string };
+      expect(token).toBeDefined();
     });
 
     it("should authenticate valid Users", async () => {
@@ -85,24 +85,6 @@ describe("AuthApi", () => {
     });
   });
 
-  describe("Logout", () => {
-    it("should clear the authentication cookie", async () => {
-      const response = await server.inject({ method: "POST", url: "/api/authenticate", payload: singleUser });
-      expect(response.statusCode).toBe(201);
-      const cookie = response.headers["set-cookie"];
-      expect(cookie).toBeDefined();
-
-      const logoutResponse = await server.inject({
-        method: "POST",
-        url: "/api/logout",
-      });
-      expect(logoutResponse.statusCode).toBe(200);
-      const logoutCookie = logoutResponse.headers["set-cookie"];
-      expect(logoutCookie).toBeDefined();
-      expect(logoutCookie![0]).toContain(`${process.env.cookie_name}=;`);
-    });
-  });
-
   describe("User Access", () => {
     it("should deny access to protected routes without authentication", async () => {
       const response = await server.inject({ method: "GET", url: "/api/trails" });
@@ -113,13 +95,12 @@ describe("AuthApi", () => {
       const authResponse = await server.inject({ method: "POST", url: "/api/authenticate", payload: singleUser });
       expect(authResponse.statusCode).toBe(201);
 
-      let cookie = authResponse.headers["set-cookie"];
-      cookie = cookie![0].split(";")[0];
+      const { token } = JSON.parse(authResponse.payload) as { success: boolean; token: string };
 
       const protectedResponse = await server.inject({
         method: "GET",
         url: "/api/trails",
-        headers: { cookie },
+        headers: { Authorization: token },
       });
 
       expect(protectedResponse.statusCode).toBe(200);
@@ -131,10 +112,9 @@ describe("AuthApi", () => {
       const authResponse = await server.inject({ method: "POST", url: "/api/authenticate", payload: singleUser });
       expect(authResponse.statusCode).toBe(201);
 
-      let cookie = authResponse.headers["set-cookie"];
-      cookie = cookie![0].split(";")[0];
+      const { token } = JSON.parse(authResponse.payload) as { success: boolean; token: string };
 
-      const response = await server.inject({ method: "GET", url: "/api/users", headers: { cookie } });
+      const response = await server.inject({ method: "GET", url: "/api/users", headers: { Authorization: token } });
       expect(response.statusCode).toBe(403);
     });
     it("should allow access to admin routes for admin users", async () => {
@@ -143,10 +123,9 @@ describe("AuthApi", () => {
       const authResponse = await server.inject({ method: "POST", url: "/api/authenticate", payload: singleUser });
       expect(authResponse.statusCode).toBe(201);
 
-      let cookie = authResponse.headers["set-cookie"];
-      cookie = cookie![0].split(";")[0];
+      const { token } = JSON.parse(authResponse.payload) as { success: boolean; token: string };
 
-      const response = await server.inject({ method: "GET", url: "/api/users", headers: { cookie } });
+      const response = await server.inject({ method: "GET", url: "/api/users", headers: { Authorization: token } });
       expect(response.statusCode).toBe(200);
     });
   });
