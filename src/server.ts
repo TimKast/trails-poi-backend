@@ -38,7 +38,6 @@ export async function initServerSecurity(server: Server) {
 async function init() {
   const server = Hapi.server({
     port: process.env.PORT || 3000,
-    host: "localhost",
     routes: { cors: true },
   });
   server.validator(Joi);
