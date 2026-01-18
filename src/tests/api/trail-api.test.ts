@@ -1,11 +1,11 @@
 import { Server } from "@hapi/hapi";
 import { afterAll, beforeAll, beforeEach, describe, expect, it } from "vitest";
-import { connectMongo, disconnectMongo } from "../../helper/db-utils";
-import { db } from "../../models/db";
-import { Trail } from "../../types/model-types";
-import { otherTrail, singleTrail, testTrails } from "../fixtures/trails";
-import { nonexistingId } from "../fixtures/utils";
-import { createTestServer } from "../test-server";
+import { connectMongo, disconnectMongo } from "../../helper/db-utils.js";
+import { db } from "../../models/db.js";
+import { Trail } from "../../types/model-types.js";
+import { otherTrail, singleTrail, testTrails } from "../fixtures/trails.js";
+import { nonexistingId } from "../fixtures/utils.js";
+import { createTestServer } from "../test-server.js";
 
 describe("TrailApi", () => {
   let server: Server;
@@ -73,7 +73,7 @@ describe("TrailApi", () => {
       expect(body._id).toBeDefined();
       expect(body.name).toBe(otherTrail.name);
       expect(body.description).toBe(otherTrail.description);
-      expect(body.location).toStrictEqual(otherTrail.location);
+      expect(body.geometry).toStrictEqual(otherTrail.geometry);
     });
   });
 

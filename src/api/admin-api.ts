@@ -1,10 +1,10 @@
 import Boom from "@hapi/boom";
 import { Request, ResponseToolkit } from "@hapi/hapi";
-import { requireAdmin } from "../helper/jwt-utils";
-import { validationError } from "../helper/logger";
-import { db } from "../models/db";
-import { IdSpec, SuccessSpec } from "../models/joi-schemas/common-spec";
-import { UserArraySpec } from "../models/joi-schemas/user-spec";
+import { requireAdmin } from "../helper/jwt-utils.js";
+import { validationError } from "../helper/logger.js";
+import { db } from "../models/db.js";
+import { IdSpec, SuccessSpec } from "../models/joi-schemas/common-spec.js";
+import { UserArraySpec } from "../models/joi-schemas/user-spec.js";
 
 export const adminApi = {
   findUsers: {

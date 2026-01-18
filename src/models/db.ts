@@ -1,7 +1,7 @@
-import { PoiStore, TrailStore, UserStore } from "../types/store-types";
-import { poiMongoStore } from "./mongo/stores/poi-mongo-store";
-import { trailMongoStore } from "./mongo/stores/trail-mongo-store";
-import { userMongoStore } from "./mongo/stores/user-mongo-store";
+import { PoiStore, TrailStore, UserStore } from "../types/store-types.js";
+import { poiMongoStore } from "./mongo/stores/poi-mongo-store.js";
+import { trailMongoStore } from "./mongo/stores/trail-mongo-store.js";
+import { userMongoStore } from "./mongo/stores/user-mongo-store.js";
 
 type Db = {
   userStore: UserStore | null;

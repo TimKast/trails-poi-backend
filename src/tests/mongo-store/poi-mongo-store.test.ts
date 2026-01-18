@@ -1,8 +1,8 @@
 import { afterAll, beforeAll, beforeEach, describe, expect, it } from "vitest";
-import { connectMongo, disconnectMongo } from "../../helper/db-utils";
-import { poiMongoStore } from "../../models/mongo/stores/poi-mongo-store";
-import { otherPoi, singlePoi, testPois } from "../../tests/fixtures/pois";
-import { Poi } from "../../types/model-types";
+import { connectMongo, disconnectMongo } from "../../helper/db-utils.js";
+import { poiMongoStore } from "../../models/mongo/stores/poi-mongo-store.js";
+import { otherPoi, singlePoi, testPois } from "../../tests/fixtures/pois.js";
+import { Poi } from "../../types/model-types.js";
 
 describe("PoiMongoStore", () => {
   let created: Poi;

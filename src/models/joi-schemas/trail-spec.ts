@@ -1,5 +1,5 @@
 import Joi from "joi";
-import { IdSpec, ImageUriArraySpec, LineStringSpec } from "./common-spec";
+import { IdSpec, ImageUriArraySpec, LineStringSpec } from "./common-spec.js";
 
 export const TrailSpec = Joi.object({
   name: Joi.string().example("Sunny Trail").required(),

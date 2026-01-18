@@ -1,5 +1,5 @@
 import { Schema, model } from "mongoose";
-import { Poi } from "../../../types/model-types";
+import { Poi } from "../../../types/model-types.js";
 
 const poiSchema = new Schema<Poi>({
   name: String,
