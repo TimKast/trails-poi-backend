@@ -30,7 +30,7 @@ describe("TrailMongoStore", () => {
       expect(trail._id).toBeDefined();
       expect(trail.name).toBe(otherTrail.name);
       expect(trail.description).toBe(otherTrail.description);
-      expect(trail.location).toEqual(otherTrail.location);
+      expect(trail.geometry).toEqual(otherTrail.geometry);
     });
   });
 
@@ -66,7 +66,7 @@ describe("TrailMongoStore", () => {
       expect(updated).toBeDefined();
       expect(updated?.name).toBe(otherTrail.name);
       expect(updated?.description).toBe(otherTrail.description);
-      expect(updated?.location).toEqual(otherTrail.location);
+      expect(updated?.geometry).toEqual(otherTrail.geometry);
     });
 
     it("returns null when updating non-existing trail", async () => {
