@@ -73,7 +73,7 @@ describe("TrailApi", () => {
       expect(body._id).toBeDefined();
       expect(body.name).toBe(otherTrail.name);
       expect(body.description).toBe(otherTrail.description);
-      expect(body.location).toStrictEqual(otherTrail.location);
+      expect(body.geometry).toStrictEqual(otherTrail.geometry);
     });
   });
 
